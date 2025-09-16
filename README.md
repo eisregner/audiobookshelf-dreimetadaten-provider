@@ -28,7 +28,7 @@ docker-compose up -d
 
 ### Option 2: Manuell
 ```bash
-git clone https://github.com/eosregner/audiobookshelf-dreimetadaten-provider.git
+git clone https://github.com/eisregner/audiobookshelf-dreimetadaten-provider.git
 cd audiobookshelf-dreimetadaten-provider
 pip install -r requirements.txt
 python abs_dreimetadata.py
