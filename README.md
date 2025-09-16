@@ -156,7 +156,7 @@ docker-compose up --build
 
 ### Lokale Entwicklung
 ```bash
-git clone https://github.com/IHR-USERNAME/audiobookshelf-dreimetadaten-provider.git
+git clone https://github.com/eisregner/audiobookshelf-dreimetadaten-provider.git
 cd audiobookshelf-dreimetadaten-provider
 
 # Dependencies installieren
