@@ -1,7 +1,7 @@
 # Audiobookshelf DreiMetadaten Provider
 
 Ein spezialisierter Metadata-Provider für Audiobookshelf, der deutsche Hörspiele aus der [dreimetadaten.de](https://dreimetadaten.de) Datenbank durchsuchbar macht.
-
+![Search](Images/Search.png "Search")
 ## Unterstützte Serien
 - **Die drei ???** (Hauptserie)
 - **Die drei ??? Kids** 
@@ -37,7 +37,7 @@ python abs_dreimetadata.py
 Der Provider läuft dann auf `http://localhost:5000`
 
 ## Konfiguration in Audiobookshelf
-
+![Config](Images/Config.png "Config")
 1. Gehe zu **Einstellungen → Metadaten → Benutzerdefinierte Metadatenanbieter → Hinzufügen**
 2. Füge einen neuen **Custom Metadata Provider** hinzu:
    - **Name**: DreiMetadaten Provider
