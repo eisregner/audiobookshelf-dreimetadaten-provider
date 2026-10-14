@@ -1,556 +1,421 @@
 from flask import Flask, jsonify, request
 import requests
+import os
 import re
-from datetime import datetime
-from functools import lru_cache
-from difflib import SequenceMatcher
+import threading
 import time
+from difflib import SequenceMatcher
 from typing import Dict, List, Optional, Any, Tuple
 import logging
 
 # Logging konfigurieren
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=os.environ.get("LOG_LEVEL", "INFO").upper(),
+    format="%(asctime)s %(levelname)s %(message)s",
+)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
-# Basis-URL für die dreimetadaten.de JSON-Daten
-DREI_METADATEN_BASE_URL = "https://raw.githubusercontent.com/YourMJK/dreimetadaten/master/metadata/json"
+VERSION = "1.2.0"
 
-@lru_cache(maxsize=1)
-def get_metadata_cached() -> Tuple[Dict[str, Any], float]:
-    """Cache die Metadaten für 1 Stunde"""
-    try:
-        response = requests.get(f"{DREI_METADATEN_BASE_URL}/Alle.json", timeout=10)
+# Komplette Metadaten aller Kategorien von dreimetadaten.de
+METADATA_URL = os.environ.get(
+    "METADATA_URL",
+    "https://raw.githubusercontent.com/YourMJK/dreimetadaten/master/metadata/json/Alle.json",
+)
+# Wie lange die Daten gültig sind, bevor auf Änderungen geprüft wird (Sekunden)
+CACHE_TTL = int(os.environ.get("CACHE_TTL", "3600"))
+# Nach einem fehlgeschlagenen Abruf erst nach dieser Zeit erneut versuchen (Sekunden)
+RETRY_AFTER = 60
+# Optional: Schlüssel, den Audiobookshelf im AUTHORIZATION-Header mitschicken muss
+API_KEY = os.environ.get("API_KEY", "")
+
+MAX_RESULTS = 10
+MIN_SCORE = 100
+
+# Kategorie-Schlüssel aus der JSON → Serienname in Audiobookshelf
+SERIES_NAMES = {
+    "serie": "Die drei ???",
+    "spezial": "Die drei ??? Spezial",
+    "kurzgeschichten": "Die drei ??? Kurzgeschichten",
+    "die_dr3i": "DiE DR3i",
+    "kids": "Die drei ??? Kids",
+    "sonstige": "Sonstige",
+}
+
+# Kategorien ohne Folgennummer, deren Reihenfolge in der JSON der offiziellen Position entspricht
+POSITIONAL_CATEGORIES = {"spezial", "kurzgeschichten"}
+
+# Wörter am Anfang einer Suche, die auf eine Kategorie hinweisen
+CATEGORY_HINTS = {
+    "kids": "kids",
+    "dr3i": "die_dr3i",
+    "spezial": "spezial",
+    "kurzgeschichte": "kurzgeschichten",
+    "kurzgeschichten": "kurzgeschichten",
+}
+
+# Präfixe, die vor dem eigentlichen Titel stehen können (z.B. aus Ordnernamen)
+# und die Folgennummer, z.B. "Die drei ??? - Folge 006 - und der ..."
+# Füllwörter, die beim Wortvergleich nicht zählen
+STOPWORDS = {"und", "der", "die", "das", "des", "dem", "den", "ein", "eine", "im", "in", "am", "an", "auf",
+             "von", "vom", "zum", "zur", "mit", "drei", "kids", "folge"}
+
+QUERY_PREFIX_RE = re.compile(
+    r"^(?:die drei fragezeichen|drei fragezeichen|die drei|ddf|die dr3i|dr3i|kids|spezial"
+    r"|kurzgeschichten?|folge|nr|nummer|(\d{1,3}))(?:\s+|$)"
+)
+
+
+class MetadataStore:
+    """Hält die Metadaten im Speicher und lädt sie nur bei Änderungen neu.
+
+    Schlägt ein Abruf fehl, werden die zuletzt geladenen Daten weiter verwendet.
+    """
+
+    def __init__(self, url: str, ttl: int):
+        self.url = url
+        self.ttl = ttl
+        self.lock = threading.Lock()
+        self.data: Optional[Dict[str, Any]] = None
+        self.entries: List[Dict[str, Any]] = []
+        self.by_id: Dict[str, Dict[str, Any]] = {}
+        self.etag: Optional[str] = None
+        self.checked_at = 0.0
+        self.loaded_at = 0.0
+        self.last_error: Optional[str] = None
+
+    def get(self) -> Optional[Dict[str, Any]]:
+        with self.lock:
+            if self.data is None or time.time() - self.checked_at >= self.ttl:
+                try:
+                    self._refresh()
+                    self.last_error = None
+                except Exception as e:
+                    self.last_error = str(e)
+                    logger.error(f"Fehler beim Laden der Metadaten: {e}")
+                    # Nicht bei jeder Anfrage erneut versuchen
+                    self.checked_at = time.time() - self.ttl + RETRY_AFTER
+            return self.data
+
+    def _refresh(self) -> None:
+        headers = {"If-None-Match": self.etag} if self.etag and self.data is not None else {}
+        response = requests.get(self.url, headers=headers, timeout=30)
+        self.checked_at = time.time()
+        if response.status_code == 304:
+            logger.debug("Metadaten unverändert")
+            return
         response.raise_for_status()
-        return response.json(), time.time()
-    except Exception as e:
-        logger.error(f"Fehler beim Laden der Metadaten: {e}")
-        raise
+        data = response.json()
+        self.entries, self.by_id = build_index(data)
+        self.data = data
+        self.etag = response.headers.get("ETag")
+        self.loaded_at = self.checked_at
+        logger.info(f"Metadaten geladen: {len(self.entries)} Hörspiele, Version {data.get('dbInfo', {}).get('version', '?')}")
 
-def get_fresh_metadata() -> Dict[str, Any]:
-    """Holt frische Metadaten oder nutzt Cache"""
-    try:
-        metadata, timestamp = get_metadata_cached()
-        if time.time() - timestamp > 3600:  # 1 Stunde
-            get_metadata_cached.cache_clear()
-            metadata, _ = get_metadata_cached()
-        return metadata
-    except Exception as e:
-        logger.error(f"Fehler beim Abrufen der Metadaten: {e}")
-        return {}
 
-def fuzzy_match(query: str, text: str, threshold: float = 0.6) -> bool:
-    """Fuzzy String Matching für Typos"""
-    if not query or not text:
-        return False
-    return SequenceMatcher(None, query.lower(), text.lower()).ratio() >= threshold
+store = MetadataStore(METADATA_URL, CACHE_TTL)
 
-def calculate_match_score(episode: Dict[str, Any], query: str, clean_query: str, folge_nummer: str) -> int:
-    """Berechnet einen Match-Score für bessere Sortierung"""
-    score = 0
-    title = episode.get("titel", "").lower()
-    
-    # FOLGEN-NUMMER hat absolut höchste Priorität
-    if query == folge_nummer or clean_query == folge_nummer:
-        return 1000  # Unschlagbar hoher Score
-    
-    # TITEL-MATCHES (das wichtigste nach Folgen-Nummer)
-    # Exakte Treffer
-    if title == query or title == clean_query:
-        score = 900  # Sehr hoch
-    # Query komplett im Titel enthalten
+
+def normalize(text: str) -> str:
+    """Kleinschreibung, Satzzeichen entfernen, Leerzeichen zusammenfassen"""
+    return " ".join(re.sub(r"[^\w]+", " ", text.lower()).split())
+
+
+def strip_und(title: str) -> str:
+    """Entfernt das typische "und der/die/das" am Titelanfang"""
+    return re.sub(r"^und (?:der |die |das )?", "", title)
+
+
+def build_index(data: Dict[str, Any]) -> Tuple[List[Dict[str, Any]], Dict[str, Dict[str, Any]]]:
+    """Bereitet alle Hörspiele einmalig für die Suche auf"""
+    entries = []
+    by_id = {}
+    for category in SERIES_NAMES:
+        episodes = data.get(category)
+        if not isinstance(episodes, list):
+            continue
+        for position, episode in enumerate(episodes, start=1):
+            if not isinstance(episode, dict) or not episode.get("titel"):
+                continue
+            if "nummer" in episode:
+                sequence = str(episode["nummer"])
+            elif category in POSITIONAL_CATEGORIES:
+                sequence = str(position)
+            else:
+                sequence = None
+            title = normalize(episode["titel"])
+            entry = {
+                "category": category,
+                "episode": episode,
+                "sequence": sequence,
+                "title": title,
+                "short_title": strip_und(title),
+            }
+            entries.append(entry)
+            drei_id = episode.get("ids", {}).get("dreimetadaten")
+            if drei_id is not None:
+                by_id[str(drei_id)] = entry
+    return entries, by_id
+
+
+def parse_query(query: str) -> Tuple[str, str, Optional[int], Optional[str]]:
+    """Zerlegt eine Suche in Titel, Folgennummer und Kategorie-Hinweis
+
+    Gibt (komplette Suche, Titel ohne Präfixe, Folgennummer, Kategorie) zurück.
+    """
+    full = normalize(query)
+    rest = full
+    number = None
+    category = None
+    while True:
+        match = QUERY_PREFIX_RE.match(rest)
+        if not match or not match.group(0):
+            break
+        word = match.group(0).strip()
+        if match.group(1) is not None:
+            if number is not None:
+                break
+            number = int(match.group(1))
+        elif word.split()[-1] in CATEGORY_HINTS:
+            category = CATEGORY_HINTS[word.split()[-1]]
+        rest = rest[match.end():]
+    return full, rest, number, category
+
+
+def title_score(query: str, title: str, short_title: str) -> float:
+    """Bewertet, wie gut eine Suche zu einem Titel passt (0 = kein Treffer)"""
+    if not query:
+        return 0
+    if query in (title, short_title):
+        score = 900
+    elif f" {query} " in f" {title} ":
+        score = 800
     elif query in title:
-        score = 800  # Hoch
-    elif clean_query in title:
-        score = 750  # Hoch
-    # Titel im Query enthalten (für vollständige Titel wie "Die drei ??? und der...")
-    elif title in query:
-        score = 700  # Hoch
-    
-    # Wortgrenzen-Matches (präziser)
-    elif clean_query and re.search(r'\b' + re.escape(clean_query) + r'\b', title):
-        score = 600
-    elif re.search(r'\b' + re.escape(query) + r'\b', title):
-        score = 550
-    
-    # Teilstring-Matches am Anfang des Titels (oft wichtig)
-    elif title.startswith(query.lower()):
-        score = 500
-    elif title.startswith(clean_query.lower()):
-        score = 450
-    
-    # Fuzzy Matches als Fallback für Tippfehler
-    elif fuzzy_match(query, title, 0.8):
-        score = 300
-    elif fuzzy_match(clean_query, title, 0.8):
-        score = 250
-    elif fuzzy_match(query, title, 0.6):
-        score = 150
-    elif fuzzy_match(clean_query, title, 0.6):
-        score = 100
-    
-    # Kleinere Boni für bessere Sortierung
+        score = 700
+    elif len(short_title) > 3 and f" {short_title} " in f" {query} ":
+        # Suche enthält den kompletten Titel plus weitere Wörter
+        score = 650
+    else:
+        # Ohne "und der ..." vergleichen, sonst wirkt jeder Titel mit gleichem Anfang ähnlich
+        ratio = SequenceMatcher(None, strip_und(query), short_title).ratio()
+        if ratio >= 0.8:
+            score = 300
+        elif ratio >= 0.6:
+            score = 150
+        else:
+            # Anteil der Suchwörter, die im Titel vorkommen
+            words = [w for w in query.split() if len(w) > 2 and w not in STOPWORDS]
+            title_words = set(title.split())
+            found = sum(1 for w in words if w in title_words)
+            if not words or found / len(words) < 0.5:
+                return 0
+            score = 100 + 100 * found / len(words)
+    # Ähnlichkeit als Feinsortierung bei gleicher Stufe (z.B. kürzerer Titel vor längerem)
+    return score + 10 * SequenceMatcher(None, query, short_title).ratio()
+
+
+def match_score(entry: Dict[str, Any], full: str, rest: str, number: Optional[int], category: Optional[str]) -> float:
+    """Gesamtbewertung eines Hörspiels für eine Suche"""
+    if number is not None and not rest:
+        # Nur Präfix + Nummer (z.B. "Folge 6"): kein Titelvergleich
+        score = 0
+    else:
+        score = max(title_score(full, entry["title"], entry["short_title"]),
+                    title_score(rest, entry["title"], entry["short_title"]))
+
+    if number is not None and entry["episode"].get("nummer") == number:
+        # Nur eine Nummer gesucht → eindeutig; sonst Bonus, der einen exakten Titel nicht schlägt
+        score += 1000 if not rest else 300
+
     if score > 0:
-        # Bonus für längere Matches (zeigt Relevanz)
-        if len(clean_query) > 5:
-            score += 10
-        
-        # Bonus wenn Query-Wörter alle im Titel vorkommen
-        query_words = clean_query.split()
-        if len(query_words) > 1:
-            words_found = sum(1 for word in query_words if word in title)
-            if words_found == len(query_words):
-                score += 20
-            elif words_found > len(query_words) / 2:
-                score += 10
-    
+        if category and entry["category"] == category:
+            score += 150
+        elif not category and entry["category"] == "serie":
+            score += 5  # Bei Gleichstand die Hauptserie bevorzugen
     return score
 
-def parse_duration(laufzeit_str: str) -> Optional[int]:
-    """Parst Laufzeit-String und gibt Sekunden zurück"""
-    if not laufzeit_str:
-        return None
-    
-    # Verschiedene Formate unterstützen: "45 min", "1:23:45", "83 Minuten"
-    laufzeit_str = laufzeit_str.lower().strip()
-    
-    # Format: "XX min" oder "XX minuten"
-    min_match = re.search(r'(\d+)\s*min', laufzeit_str)
-    if min_match:
-        return int(min_match.group(1)) * 60
-    
-    # Format: "H:MM:SS" oder "MM:SS"
-    time_match = re.search(r'(\d+):(\d+)(?::(\d+))?', laufzeit_str)
-    if time_match:
-        hours = int(time_match.group(1)) if len(time_match.group(1)) <= 2 else 0
-        minutes = int(time_match.group(2)) if time_match.group(2) else 0
-        seconds = int(time_match.group(3)) if time_match.group(3) else 0
-        
-        # Wenn erste Zahl > 24, dann wahrscheinlich MM:SS Format
-        if hours > 24:
-            minutes = hours
-            hours = 0
-        
-        return hours * 3600 + minutes * 60 + seconds
-    
-    return None
 
-def calculate_duration_from_tracks(medien: List[Dict[str, Any]]) -> Optional[int]:
-    """Berechnet Gesamtlaufzeit aus Track-Daten"""
-    if not medien or not isinstance(medien, list) or len(medien) == 0:
+def duration_minutes(episode: Dict[str, Any]) -> Optional[int]:
+    """Gesamtlaufzeit in Minuten (so erwartet es Audiobookshelf)"""
+    total_ms = episode.get("gesamtdauer")
+    if not total_ms:
+        # Fallback: Ende des letzten Tracks jedes Mediums aufsummieren
+        total_ms = 0
+        for medium in episode.get("medien") or []:
+            tracks = medium.get("tracks") if isinstance(medium, dict) else None
+            if tracks and isinstance(tracks[-1], dict):
+                total_ms += tracks[-1].get("end", 0)
+    if not total_ms:
         return None
-    
-    # Nimm das erste Medium
-    first_medium = medien[0]
-    if not isinstance(first_medium, dict) or 'tracks' not in first_medium:
-        return None
-    
-    tracks = first_medium['tracks']
-    if not isinstance(tracks, list) or len(tracks) == 0:
-        return None
-    
-    # Finde den letzten Track und dessen End-Zeit
-    last_track = tracks[-1]
-    if isinstance(last_track, dict) and 'end' in last_track:
-        # Die End-Zeit scheint in Samples oder einer anderen Einheit zu sein
-        # Basierend auf deinem Feedback: 53h statt 53m bedeutet Faktor 60 zu viel
-        # Also wahrscheinlich Millisekunden, aber Faktor 1000 ist zu viel
-        # Teste: einfach durch 60000 teilen (Millisekunden zu Minuten, dann zu Sekunden)
-        end_time = last_track['end']
-        
-        logger.debug(f"Raw end time: {end_time}")
-        
-        # Neuer Ansatz: Empirisch angepasst basierend auf dein Feedback
-        # 53h → 53m bedeutet wir müssen durch 60 teilen
-        if end_time > 1000000:  # Große Zahlen
-            duration = int(end_time / 60000)  # Durch 60.000 statt 1.000.000
-            logger.debug(f"Interpreted with factor 60000: {duration} seconds ({duration/60:.1f} minutes)")
-        elif end_time > 10000:
-            duration = int(end_time / 1000)  # Millisekunden
-            logger.debug(f"Interpreted as milliseconds: {duration} seconds")
-        else:
-            duration = int(end_time)  # Sekunden
-            logger.debug(f"Interpreted as seconds: {duration} seconds")
-        
-        return duration
-    
-    return None
+    return round(total_ms / 60000)
 
-def enrich_metadata(abs_data: Dict[str, Any], drei_data: Dict[str, Any]) -> Dict[str, Any]:
-    """Fügt zusätzliche Metadaten hinzu"""
-    # Laufzeit extrahieren - zuerst aus medien/tracks, dann fallback auf laufzeit string
-    duration = None
-    if 'medien' in drei_data:
-        duration = calculate_duration_from_tracks(drei_data['medien'])
-    
-    if not duration and 'laufzeit' in drei_data:
-        duration = parse_duration(drei_data['laufzeit'])
-    
-    if duration:
-        abs_data['duration'] = duration
-    
-    # Minimalistische Tags wie bei Audible - nur das Wichtigste
-    tags = []
-    
-    # Jahr (wichtig für Sortierung/Filterung)
-    if abs_data.get('publishedYear'):
-        tags.append(f"Jahr {abs_data['publishedYear']}")
-    
-    # Folgen-Typ basierend auf Titel-Pattern
-    titel = drei_data.get('titel', '').lower()
-    if 'spezial' in titel:
-        tags.append('Spezialfolge')
-    elif drei_data.get('teilNummer'):
-        tags.append('Mehrteilig')
-    
-    # Nur bei besonderen Serien/Kategorien
-    if drei_data.get('kategorie') and drei_data['kategorie'] != 'Hauptserie':
-        tags.append(drei_data['kategorie'])
-    
-    # Minimale Tags - wie bei Audible
-    abs_data['tags'] = tags
-    
-    # Amazon ASIN extrahieren (für Verknüpfung)
-    links = drei_data.get('links', {})
-    if isinstance(links, dict):
-        amazon_link = links.get('amazon', '')
-        if amazon_link and isinstance(amazon_link, str):
-            asin_match = re.search(r'/dp/([A-Z0-9]{10})', amazon_link)
-            if not asin_match:
-                asin_match = re.search(r'/product/([A-Z0-9]{10})', amazon_link)
-            if asin_match:
-                abs_data['asin'] = asin_match.group(1)
-    
-    # IDs für interne Verknüpfung
-    if 'ids' in drei_data and isinstance(drei_data['ids'], dict):
-        drei_id = drei_data['ids'].get('dreimetadaten')
-        if drei_id:
-            abs_data['dreimetadaten_id'] = str(drei_id)
-    
-    return abs_data
-
-def transform_to_abs_format(drei_data: Dict[str, Any], category: Optional[str] = None) -> Dict[str, Any]:
-    """Transformiert dreimetadaten.de-Daten in ABS-kompatibles Format"""
-    if not isinstance(drei_data, dict):
-        logger.warning(f"Unerwarteter Datentyp in transform_to_abs_format: {type(drei_data)}")
-        return {}
-    
-    try:
-        # Bestimme den korrekten, offiziellen Seriennamen basierend auf der Kategorie
-        series_name = "Die drei ???"
-        if category == "die_dr3i":
-            series_name = "DiE DR3i"
-        elif category == "kids":
-            series_name = "Die drei ??? Kids"
-        elif category == "spezial":
-            series_name = "Die drei ??? Spezial"
-        elif category == "kurzgeschichten":
-            series_name = "Die drei ??? Kurzgeschichten"
-        elif category == "sonstige":
-            series_name = "Sonstige"
-        
-        # Extrahiere die relevanten Felder
-        abs_data = {
-            "title": drei_data.get("titel", ""),
-            "subtitle": None,
-            "author": drei_data.get("autor", ""),
-            "narrator": extract_narrators(drei_data.get("sprechrollen", [])),
-            "publisher": "EUROPA",
-            "publishedYear": extract_year(drei_data.get("veröffentlichungsdatum", "")),
-            "description": drei_data.get("beschreibung", "") or drei_data.get("kurzbeschreibung", "") or drei_data.get("gesamtbeschreibung", ""),
-            "cover": extract_cover_url(drei_data.get("links", {})),
-            "genres": ["Detektive & Spannung", "Kinder-Hörbücher"],  # Passend zu Audible
-            "tags": [],  # Wird in enrich_metadata befüllt
-            "series": extract_series_info(drei_data, series_name),
-            "language": "Deutsch",
-            "isbn": None,
-            "asin": None
-        }
-        
-        # Metadaten anreichern
-        abs_data = enrich_metadata(abs_data, drei_data)
-        
-        return abs_data
-        
-    except Exception as e:
-        logger.error(f"Fehler beim Transformieren der Daten: {e}")
-        return {}
 
 def extract_narrators(sprechrollen: List[Dict[str, Any]]) -> str:
-    """Extrahiert die Sprecher aus den Sprechrollen"""
+    """Sprecher in der Reihenfolge der Rollen (Hauptsprecher zuerst), ohne Duplikate"""
     narrators = []
     if isinstance(sprechrollen, list):
         for rolle in sprechrollen:
-            if isinstance(rolle, dict) and rolle.get("sprecher"):
-                narrators.append(rolle["sprecher"])
-    # Duplikate entfernen und als String zurückgeben
-    unique_narrators = list(set(narrators))
-    return ", ".join(unique_narrators) if unique_narrators else ""
+            if not isinstance(rolle, dict) or not rolle.get("sprecher"):
+                continue
+            # Mehrere Sprecher einer Rolle sind mit Komma getrennt
+            for name in rolle["sprecher"].split(","):
+                name = name.strip()
+                if name and name not in narrators:
+                    narrators.append(name)
+    return ", ".join(narrators)
 
-def extract_series_info(drei_data: Dict[str, Any], series_name: str) -> List[Dict[str, str]]:
-    """Extrahiert Serien-Informationen"""
-    series_info = []
-    
-    # Hauptserie "Die drei ???" (hat nummer Feld)
-    if "nummer" in drei_data:
-        series_info.append({
-            "series": series_name,
-            "sequence": str(drei_data["nummer"])
-        })
-    
-    # Teile (hat teilNummer Feld)
-    elif "teilNummer" in drei_data:
-        sequence = str(drei_data["teilNummer"])
-        if drei_data.get("buchstabe"):
-            sequence += f" {drei_data['buchstabe']}"
-        series_info.append({
-            "series": series_name,
-            "sequence": sequence
-        })
-    
-    # Für Folgen ohne Nummer (z.B. einige Spezialfolgen)
-    else:
-        series_info.append({
-            "series": series_name,
-            "sequence": "1"
-        })
-    
-    return series_info
 
 def extract_year(veröffentlichungsdatum: str) -> str:
-    """Extrahiert das Jahr aus dem Veröffentlichungsdatum"""
-    if veröffentlichungsdatum:
-        try:
-            if len(veröffentlichungsdatum) >= 4:
-                return veröffentlichungsdatum[:4]
-            for fmt in ("%Y-%m-%d", "%d.%m.%Y", "%Y/%m/%d", "%Y"):
-                try:
-                    dt = datetime.strptime(veröffentlichungsdatum, fmt)
-                    return str(dt.year)
-                except ValueError:
-                    continue
-        except:
-            pass
-    return ""
+    """Extrahiert das Jahr aus dem Veröffentlichungsdatum (Format YYYY-MM-DD)"""
+    match = re.match(r"\d{4}", veröffentlichungsdatum or "")
+    return match.group(0) if match else ""
+
+
+def absolute_url(path: str) -> str:
+    """Macht relative Pfade absolut und erzwingt https"""
+    if path.startswith("http://"):
+        return "https://" + path[len("http://"):]
+    if path.startswith("https://"):
+        return path
+    return "https://dreimetadaten.de/" + path.lstrip("/")
+
 
 def extract_cover_url(links: Dict[str, Any]) -> str:
-    """Extrahiert die Cover-URL"""
-    if isinstance(links, dict):
-        # Bevorzuge das Haupt-Cover (laut JSON-Beispiel: http://dreimetadaten.de/data/Serie/001/cover.png)
-        if links.get("cover"):
-            cover_path = links["cover"]
-            if cover_path.startswith(('http://', 'https://')):
-                # Konvertiere http zu https für Sicherheit
-                if cover_path.startswith('http://'):
-                    return cover_path.replace('http://', 'https://', 1)
-                return cover_path
-            elif cover_path.startswith("/"):
-                return f"https://www.dreimetadaten.de{cover_path}"
-            else:
-                return f"https://www.dreimetadaten.de/{cover_path}"
-        
-        # Fallback zu iTunes Cover (oft hochauflösend)
-        elif links.get("cover_itunes"):
-            cover_path = links["cover_itunes"]
-            if cover_path.startswith(('http://', 'https://')):
-                return cover_path
-            else:
-                return f"https://www.dreimetadaten.de/{cover_path}"
-        
-        # Fallback zu Kosmos Cover
-        elif links.get("cover_kosmos"):
-            cover_path = links["cover_kosmos"]
-            if cover_path.startswith(('http://', 'https://')):
-                return cover_path
-            else:
-                return f"https://www.dreimetadaten.de/{cover_path}"
-        
-        # Letzter Fallback zu cover2 Array (falls vorhanden)
-        elif links.get("cover2") and isinstance(links["cover2"], list) and links["cover2"]:
-            cover_path = links["cover2"][0]
-            if cover_path.startswith(('http://', 'https://')):
-                if cover_path.startswith('http://'):
-                    return cover_path.replace('http://', 'https://', 1)
-                return cover_path
-            elif cover_path.startswith("/"):
-                return f"https://www.dreimetadaten.de{cover_path}"
-            else:
-                return f"https://www.dreimetadaten.de/{cover_path}"
-    
+    """Cover-URL: eigenes Cover von dreimetadaten.de bevorzugt, sonst Alternativen"""
+    if not isinstance(links, dict):
+        return ""
+    for key in ("cover", "cover_itunes", "cover_kosmos"):
+        if isinstance(links.get(key), str) and links[key]:
+            return absolute_url(links[key])
+    cover2 = links.get("cover2")
+    if isinstance(cover2, list) and cover2 and isinstance(cover2[0], str):
+        return absolute_url(cover2[0])
     return ""
 
-def normalize_search_query(query: str) -> Tuple[str, str]:
-    """Normalisiert und bereinigt Suchanfragen"""
-    original_query = query.lower().strip()
-    
-    # Entferne häufige Prefixe die Probleme machen können
-    # WICHTIG: Da die API-Titel das Format "und der Super-Papagei" haben,
-    # müssen wir "Die drei ???" entfernen um passende Treffer zu finden
-    prefixes_to_remove = [
-        "die drei fragezeichen",
-        "die drei ???",
-        "die drei",
-        "drei ???",
-        "drei fragezeichen", 
-        "die dr3i",
-        "dr3i"
-    ]
-    
-    clean_query = original_query
-    for prefix in prefixes_to_remove:
-        if clean_query.startswith(prefix):
-            clean_query = clean_query[len(prefix):].strip()
-            # Entferne auch führende "und" nach dem Prefix
-            if clean_query.startswith("und "):
-                clean_query = clean_query[4:].strip()
-            break
-    
-    # Falls nach der Bereinigung nichts übrig ist, verwende original
-    if not clean_query:
-        clean_query = original_query
-    
-    # Zusätzlich: Falls Query mit "und der/die/das" beginnt, 
-    # erstelle auch eine Variante ohne "und"
-    alternative_query = clean_query
-    if clean_query.startswith(("und der ", "und die ", "und das ")):
-        alternative_query = clean_query[4:].strip()  # Entferne "und "
-    
-    return original_query, clean_query
+
+def transform_to_abs_format(entry: Dict[str, Any]) -> Dict[str, Any]:
+    """Wandelt ein Hörspiel in das BookMetadata-Format von Audiobookshelf um"""
+    episode = entry["episode"]
+    category = entry["category"]
+
+    series = {"series": SERIES_NAMES[category]}
+    if entry["sequence"]:
+        series["sequence"] = entry["sequence"]
+
+    year = extract_year(episode.get("veröffentlichungsdatum", ""))
+
+    # Minimalistische Tags wie bei Audible
+    tags = []
+    if year:
+        tags.append(f"Jahr {year}")
+    if category == "spezial":
+        tags.append("Spezialfolge")
+    if episode.get("teile"):
+        tags.append("Mehrteilig")
+
+    abs_data = {
+        "title": episode.get("titel", ""),
+        "author": episode.get("autor", ""),
+        "narrator": extract_narrators(episode.get("sprechrollen", [])),
+        "publisher": "EUROPA",
+        "publishedYear": year,
+        "description": episode.get("beschreibung") or episode.get("kurzbeschreibung") or episode.get("gesamtbeschreibung") or "",
+        "cover": extract_cover_url(episode.get("links", {})),
+        "genres": ["Detektive & Spannung", "Kinder-Hörbücher"],  # Passend zu Audible
+        "tags": tags,
+        "series": [series],
+        "language": "Deutsch",
+    }
+    # Keine ASIN: dreimetadaten.de kennt nur die Amazon-ID der CD, nicht die Audible-ASIN
+
+    duration = duration_minutes(episode)
+    if duration:
+        abs_data["duration"] = duration
+
+    return abs_data
+
+
+@app.before_request
+def check_api_key():
+    """Prüft den optionalen API-Schlüssel (in Audiobookshelf als "Authorization Header Value")"""
+    if API_KEY and request.endpoint == "search_books" and request.headers.get("Authorization") != API_KEY:
+        return jsonify({"error": "Unauthorized"}), 401
+
 
 @app.route('/search', methods=['GET'])
 def search_books():
     """Suchfunktion für ABS - gibt das korrekte Format zurück"""
     query = request.args.get('query', '').strip()
-    # author = request.args.get('author', '').strip()  # Komplett ignoriert
-    
+    # Der Autor wird ignoriert: Dateien sind oft mit Sprechern oder "Die drei ???" als Autor getaggt
+
     if not query:
         return jsonify({"matches": []})
-    
-    original_query, clean_query = normalize_search_query(query)
-    
-    logger.info(f"Search - Original: '{query}', Clean: '{clean_query}' (Author ignored)")
-    
-    try:
-        metadata = get_fresh_metadata()
-        if not metadata:
-            return jsonify({"matches": []})
-        
-        matches_with_scores = []
-        
-        # Durchsuche alle Kategorien
-        categories = [
-            ("serie", "Die drei ???"),
-            ("spezial", "Die drei ??? Spezial"), 
-            ("kurzgeschichten", "Die drei ??? Kurzgeschichten"),
-            ("die_dr3i", "Die DR3i"),
-            ("kids", "Drei Fragezeichen Kids"),
-            ("sonstige", "Sonstige")
-        ]
-        
-        for category_key, category_name in categories:
-            if category_key in metadata and isinstance(metadata[category_key], list):
-                for episode in metadata[category_key]:
-                    if not isinstance(episode, dict):
-                        continue
-                    
-                    # Suchkriterien - nur Titel und Folgen-Nummer, kein Autor-Filter
-                    title = episode.get("titel", "").lower()
-                    
-                    # Folge-Nummer für die Suche
-                    folge_nummer = ""
-                    if "nummer" in episode:
-                        folge_nummer = str(episode["nummer"])
-                    elif "teilNummer" in episode:
-                        folge_nummer = str(episode["teilNummer"])
-                    
-                    # KEIN Autor-Filter mehr - suche nur nach Titel/Nummer
-                    
-                    # Berechne Match-Score (fokussiert auf Titel und Folgen-Nummer)
-                    score = calculate_match_score(episode, original_query, clean_query, folge_nummer)
-                    
-                    # Zusätzlicher Score-Boost für exakte API-Titel-Matches
-                    # Da API-Titel wie "und der Super-Papagei" sind
-                    if clean_query and title == clean_query:
-                        score = max(score, 950)  # Sehr hoher Score für exakte API-Titel
-                    elif clean_query and clean_query in title and len(clean_query) > 3:
-                        score += 50  # Bonus für längere Substring-Matches
-                    
-                    # Debug-Ausgabe für Score-Analyse
-                    if score > 0:
-                        logger.debug(f"Match found - Title: '{episode.get('titel', '')}', Query: '{query}', Clean: '{clean_query}', Score: {score}")
-                    
-                    if score > 0:
-                        abs_episode = transform_to_abs_format(episode, category_key)
-                        if abs_episode and abs_episode.get("title"):
-                            matches_with_scores.append((abs_episode, score))
-        
-        # Sortiere nach Score (höchster zuerst) und nimm die besten 10
-        matches_with_scores.sort(key=lambda x: x[1], reverse=True)
-        matches = [match[0] for match in matches_with_scores[:10]]
-        
-        logger.info(f"Found {len(matches)} matches for query '{query}' (author ignored)")
-        if matches_with_scores:
-            logger.debug(f"Top scores: {[(m[0]['title'], m[1]) for m in matches_with_scores[:3]]}")
-        
-        return jsonify({"matches": matches})
-    
-    except Exception as e:
-        logger.error(f"Fehler bei der Suche: {e}")
-        return jsonify({"matches": []})
+
+    full, rest, number, category = parse_query(query)
+    logger.info(f"Suche: '{query}' → Titel: '{rest}', Nummer: {number}, Kategorie: {category}")
+
+    if store.get() is None:
+        return jsonify({"error": "Metadaten nicht verfügbar"}), 500
+
+    scored = []
+    for entry in store.entries:
+        score = match_score(entry, full, rest, number, category)
+        if score >= MIN_SCORE:
+            scored.append((score, entry))
+    scored.sort(key=lambda x: x[0], reverse=True)
+
+    for score, entry in scored[:3]:
+        logger.debug(f"  {score:7.1f}  {SERIES_NAMES[entry['category']]} {entry['sequence'] or '-'}: {entry['episode']['titel']}")
+
+    matches = [transform_to_abs_format(entry) for _, entry in scored[:MAX_RESULTS]]
+    logger.info(f"{len(matches)} Treffer für '{query}'")
+    return jsonify({"matches": matches})
+
 
 @app.route('/detail', methods=['GET'])
 def get_book_detail():
-    """Detailfunktion für ABS"""
+    """Details zu einem Hörspiel anhand der dreimetadaten-ID"""
     book_id = request.args.get('id')
-    
-    if not book_id:
+    if not book_id or store.get() is None:
         return jsonify({})
-    
-    try:
-        metadata = get_fresh_metadata()
-        if not metadata:
-            return jsonify({})
-        
-        # Durchsuche alle Kategorien
-        categories = ["serie", "spezial", "kurzgeschichten", "die_dr3i", "kids", "sonstige"]
-        
-        for category_key in categories:
-            if category_key in metadata and isinstance(metadata[category_key], list):
-                for episode in metadata[category_key]:
-                    if not isinstance(episode, dict):
-                        continue
-                    
-                    # Prüfe anhand der dreimetadaten ID
-                    episode_id = str(episode.get("ids", {}).get("dreimetadaten", ""))
-                    if episode_id == book_id:
-                        abs_episode = transform_to_abs_format(episode, category_key)
-                        return jsonify(abs_episode)
-        
-        return jsonify({})
-    
-    except Exception as e:
-        logger.error(f"Fehler beim Abrufen der Details: {e}")
-        return jsonify({})
+    entry = store.by_id.get(book_id)
+    return jsonify(transform_to_abs_format(entry) if entry else {})
+
 
 @app.route('/name', methods=['GET'])
 def get_provider_name():
     return jsonify({"name": "DreiMetadaten.de Provider"})
 
+
 @app.route('/version', methods=['GET'])
 def get_version():
-    return jsonify({"version": "1.1.0"})
+    return jsonify({"version": VERSION})
+
 
 @app.route('/health', methods=['GET'])
 def health_check():
-    """Health Check Endpoint"""
-    try:
-        response = requests.get(f"{DREI_METADATEN_BASE_URL}/Alle.json", timeout=5)
-        response.raise_for_status()
-        return jsonify({"status": "healthy", "api_accessible": True}), 200
-    except Exception as e:
-        logger.error(f"Health check failed: {e}")
-        return jsonify({"status": "unhealthy", "api_accessible": False}), 503
+    """Health Check: lädt die Daten nur, wenn der Cache abgelaufen ist"""
+    data = store.get()
+    status = {
+        "status": "healthy" if data is not None else "unhealthy",
+        "entries": len(store.entries),
+        "data_version": (data or {}).get("dbInfo", {}).get("version"),
+        "loaded_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(store.loaded_at)) if store.loaded_at else None,
+        "last_error": store.last_error,
+    }
+    return jsonify(status), 200 if data is not None else 503
+
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    host = os.environ.get("HOST", "0.0.0.0")
+    port = int(os.environ.get("PORT", "5000"))
+    store.get()  # Daten beim Start laden
+    try:
+        from waitress import serve
+        logger.info(f"Provider läuft auf http://{host}:{port}")
+        serve(app, host=host, port=port)
+    except ImportError:
+        logger.warning("waitress nicht installiert - nutze den Flask-Entwicklungsserver")
+        app.run(host=host, port=port)

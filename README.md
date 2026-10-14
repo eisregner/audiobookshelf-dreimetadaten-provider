@@ -15,15 +15,19 @@ Ein spezialisierter Metadata-Provider für Audiobookshelf, der deutsche Hörspie
 - **Intelligente Suche**: Findet Titel auch bei Teilangaben ("Super-Papagei" findet "und der Super-Papagei")
 - **Präzise Metadaten**: Korrekte Laufzeiten, Sprecher, Cover und Beschreibungen
 - **Saubere Tags**: Minimalistische Tags wie bei Audible
-- **Folgen-Nummer Suche**: Direkte Suche nach Folgen-Nummer (z.B. "6")
+- **Folgen-Nummer Suche**: Direkte Suche nach Folgen-Nummer (z.B. "6", "Folge 006", "Kids 6")
+- **Ordnernamen**: Versteht typische Benennungen wie "Die drei ??? - 006 - und der sprechende Totenkopf"
 - **Autor-unabhängig**: Suche funktioniert unabhängig von Autor-Angaben
 - **Fuzzy Search**: Toleriert Tippfehler und findet ähnliche Titel
+- **Korrekte Laufzeit**: Gesamtdauer auch bei mehrteiligen Folgen mit mehreren CDs
 
 ## Installation
 
+Benötigt Python 3.9 oder neuer.
+
 ### Dependencies installieren
 ```bash
-pip install flask requests
+pip install -r requirements.txt
 ```
 
 ### Provider starten
@@ -31,7 +35,19 @@ pip install flask requests
 python abs_dreimetadata.py
 ```
 
-Der Provider läuft dann auf `http://localhost:5000`
+Der Provider läuft dann auf `http://localhost:5000` (mit dem Produktions-Server [waitress](https://docs.pylonsproject.org/projects/waitress/)).
+
+### Einstellungen (Umgebungsvariablen, optional)
+
+| Variable | Standard | Beschreibung |
+|---|---|---|
+| `PORT` | `5000` | Port des Providers |
+| `HOST` | `0.0.0.0` | Netzwerk-Interface |
+| `API_KEY` | – | Wenn gesetzt, muss Audiobookshelf diesen Wert als Authorization Header mitschicken |
+| `CACHE_TTL` | `3600` | Sekunden, bis auf neue Daten geprüft wird |
+| `LOG_LEVEL` | `INFO` | `DEBUG` zeigt zusätzlich die Bewertung der besten Treffer |
+
+Beispiel: `API_KEY=geheim PORT=5050 python abs_dreimetadata.py`
 
 ## Konfiguration in Audiobookshelf
 ![Config](Images/Config.png "Config")
@@ -39,6 +55,7 @@ Der Provider läuft dann auf `http://localhost:5000`
 2. Füge einen neuen **Custom Metadata Provider** hinzu:
    - **Name**: DreiMetadaten Provider
    - **URL**: `http://localhost:5000` (oder deine Server-IP:5000)
+   - **Authorization Header Value**: nur wenn `API_KEY` gesetzt ist, sonst leer lassen
 3. Speichern und testen
 
 ## Beispiel-Suchen
@@ -46,6 +63,9 @@ Der Provider läuft dann auf `http://localhost:5000`
 "Die drei ??? und der Super-Papagei"  → Findet Folge 1
 "Super-Papagei"                       → Findet Folge 1
 "6"                                   → Findet Folge 6
+"Folge 006"                           → Findet Folge 6
+"Kids 6"                              → Findet Die drei ??? Kids Folge 6
+"Die drei ??? - 125 - Feuermond"      → Findet Folge 125
 "sprechende Totenkopf"               → Findet passende Folgen
 "Eisenmann"                          → Findet "und der Eisenmann"
 ```
@@ -58,8 +78,14 @@ Nach dem Start einfach ein zweites Terminal öffnen um die Suche zu testen:
 # Test-Suche
 curl "http://localhost:5000/search?query=Super-Papagei"
 
-# Health Check
+# Health Check (zeigt Datenversion und Zeitpunkt des letzten Ladens)
 curl "http://localhost:5000/health"
+```
+
+### Automatische Tests
+```bash
+pip install -r requirements-dev.txt
+python -m pytest
 ```
 
 ## Troubleshooting
@@ -77,10 +103,11 @@ curl "http://localhost:5000/health"
 
 - **Framework**: Flask
 - **Datenquelle**: [dreimetadaten.de GitHub API](https://github.com/YourMJK/dreimetadaten)
-- **Caching**: 1-Stunden Cache für API-Daten
+- **Caching**: Daten werden im Speicher gehalten und stündlich per ETag auf Änderungen geprüft; ist GitHub nicht erreichbar, werden die zuletzt geladenen Daten weiter genutzt
 - **Fuzzy Search**: Toleriert Tippfehler und Teilangaben
 - **Score-basiertes Ranking**: Beste Treffer zuerst
-- **Metadaten**: Cover, Laufzeit, Sprecher, Beschreibungen, ASIN
+- **Metadaten**: Cover, Laufzeit (in Minuten), Sprecher (Hauptsprecher zuerst), Beschreibungen, Serie mit Folgennummer
+- **Keine ASIN**: dreimetadaten.de enthält nur die Amazon-ID der CD, nicht die Audible-ASIN – eine falsche ASIN würde z.B. den Kapitel-Abgleich in Audiobookshelf stören
 
 ## API Endpoints
 

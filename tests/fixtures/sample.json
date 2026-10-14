@@ -1,0 +1,2213 @@
+{
+ "dbInfo": {
+  "version": "2.10.9",
+  "lastModified": "2026-09-22T13:00:50Z"
+ },
+ "serie": [
+  {
+   "nummer": 1,
+   "titel": "und der Super-Papagei",
+   "autor": "Robert Arthur",
+   "hörspielskriptautor": "H. G. Francis",
+   "beschreibung": "Der Auftrag an die drei Detektive hört sich recht harmlos an: Sie sollen einen entflogenen Papagei suchen. Doch kaum beg",
+   "veröffentlichungsdatum": "1979-10-12",
+   "gesamtdauer": 3144160,
+   "sprechrollen": [
+    {
+     "rolle": "Hitchcock, Erzähler",
+     "sprecher": "Peter Pasetti"
+    },
+    {
+     "rolle": "Justus Jonas, Erster Detektiv",
+     "sprecher": "Oliver Rohrbeck"
+    },
+    {
+     "rolle": "Peter Shaw, Zweiter Detektiv",
+     "sprecher": "Jens Wawrczeck"
+    },
+    {
+     "rolle": "Bob Andrews, Recherchen und Archiv",
+     "sprecher": "Andreas Fröhlich"
+    },
+    {
+     "rolle": "Mr. Fentriss, Schriftsteller",
+     "sprecher": "Richard Lauffen"
+    },
+    {
+     "rolle": "Mr. Claudius, Kunsthändler",
+     "sprecher": "Gerlach Fiedler"
+    },
+    {
+     "rolle": "Mrs. Claudius",
+     "sprecher": "Ingrid Andree"
+    },
+    {
+     "rolle": "Miss Waggoner",
+     "sprecher": "Katharina Brauren"
+    },
+    {
+     "rolle": "Carlos",
+     "sprecher": "Stefan Brönneke"
+    },
+    {
+     "rolle": "Onkel Ramos",
+     "sprecher": "Karl-Ulrich Meves",
+     "pseudonym": "Juan Perez"
+    },
+    {
+     "rolle": "Hugenay",
+     "sprecher": "Wolfgang Kubach",
+     "pseudonym": "Albert Giro"
+    },
+    {
+     "rolle": "Morton",
+     "sprecher": "Andreas von der Meden"
+    }
+   ],
+   "links": {
+    "cover": "http://dreimetadaten.de/data/Serie/001/cover.png",
+    "cover_itunes": "http://a1.mzstatic.com/us/r30/Music41/v4/c9/3f/e4/c93fe4aa-c385-ed18-2cb3-e4eeff284f5a/source",
+    "cover_kosmos": "http://web.archive.org/web/20220115152728if_/https://s3.eu-central-1.amazonaws.com/kosmos.de/media/image/f1/48/5f/0743213880129.jpg",
+    "cover_dreifragezeichen": "https://cdn-p.smehost.net/sites/374be6422f2b494ab9128079a4bd7dfd/produkte/hoerspiele/ddf_cd_001.jpg",
+    "amazon": "https://www.amazon.de/gp/product/B00005QXM1"
+   },
+   "ids": {
+    "dreimetadaten": 1,
+    "appleMusic": "1092529875",
+    "spotify": "4N9tvSjWfZXx3eHKblYEWQ",
+    "bookbeat": "534575",
+    "amazonMusic": "B01CURZRWG",
+    "amazon": "B00005QXM1",
+    "youTubeMusic": "MPREb_CjlxsM5R4UV",
+    "deezer": "12761822"
+   },
+   "medien": [
+    {
+     "tracks": [
+      {
+       "titel": "Blackbeard hat das letzte Wort",
+       "start": 2761453,
+       "end": 3144160
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "nummer": 6,
+   "titel": "und der sprechende Totenkopf",
+   "autor": "Robert Arthur",
+   "hörspielskriptautor": "H. G. Francis",
+   "beschreibung": "Peter und Bob halten von Anfang an nicht viel davon, dass ihr Freund Justus auf einer Versteigerung ausgerechnet einen u",
+   "veröffentlichungsdatum": "1979-10-17",
+   "gesamtdauer": 2752640,
+   "sprechrollen": [
+    {
+     "rolle": "Hitchcock, Erzähler",
+     "sprecher": "Peter Pasetti"
+    },
+    {
+     "rolle": "Justus Jonas, Erster Detektiv",
+     "sprecher": "Oliver Rohrbeck"
+    },
+    {
+     "rolle": "Peter Shaw, Zweiter Detektiv",
+     "sprecher": "Jens Wawrczeck"
+    },
+    {
+     "rolle": "Bob Andrews, Recherchen und Archiv",
+     "sprecher": "Andreas Fröhlich"
+    },
+    {
+     "rolle": "Tante Mathilda",
+     "sprecher": "Karin Lieneweg"
+    },
+    {
+     "rolle": "Patrick Kenneth",
+     "sprecher": "Wolfgang Kubach"
+    },
+    {
+     "rolle": "Gulliver",
+     "sprecher": "Joachim Wolff"
+    },
+    {
+     "rolle": "Mr. Maximillian",
+     "sprecher": "Richard Lauffen"
+    },
+    {
+     "rolle": "Kommissar Reynolds",
+     "sprecher": "Horst Frank"
+    },
+    {
+     "rolle": "Mrs. Miller",
+     "sprecher": "Marianne Kehlau",
+     "pseudonym": "Marianne Wolters"
+    },
+    {
+     "rolle": "Mr. Grant",
+     "sprecher": "Lothar Grützner",
+     "pseudonym": "Hans Meinhardt"
+    },
+    {
+     "rolle": "Auktionator",
+     "sprecher": "Gerlach Fiedler"
+    },
+    {
+     "rolle": "Fred Brown",
+     "sprecher": "Peter Buchholz"
+    },
+    {
+     "rolle": "Hauswirt",
+     "sprecher": "Reiner Brönneke"
+    },
+    {
+     "rolle": "Mann",
+     "sprecher": "Karl-Ulrich Meves"
+    }
+   ],
+   "links": {
+    "cover": "http://dreimetadaten.de/data/Serie/006/cover.png",
+    "cover_itunes": "http://a1.mzstatic.com/us/r30/Music71/v4/a7/e7/cb/a7e7cbc3-0ce0-34db-a310-d7b82546f2b0/source",
+    "cover_kosmos": "http://web.archive.org/web/20220111212354if_/https://s3.eu-central-1.amazonaws.com/kosmos.de/media/image/aa/ae/38/0743213880624.jpg",
+    "cover_dreifragezeichen": "https://cdn-p.smehost.net/sites/374be6422f2b494ab9128079a4bd7dfd/produkte/hoerspiele/ddf_cd_006.jpg",
+    "amazon": "https://www.amazon.de/gp/product/B00005Q4X5"
+   },
+   "ids": {
+    "dreimetadaten": 6,
+    "appleMusic": "1092534669",
+    "spotify": "54eP8BYMR270sTqklv83V0",
+    "bookbeat": "534673",
+    "amazonMusic": "B01CV1CF62",
+    "amazon": "B00005Q4X5",
+    "youTubeMusic": "MPREb_Ptve9f8NomH",
+    "deezer": "12761838"
+   },
+   "medien": [
+    {
+     "tracks": [
+      {
+       "titel": "Wo ist das Geld?",
+       "start": 2423800,
+       "end": 2752640
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "nummer": 13,
+   "titel": "und der lachende Schatten",
+   "autor": "William Arden",
+   "hörspielskriptautor": "H. G. Francis",
+   "beschreibung": "Schatten pflegen normalerweise zu schweigen.\nHier aber lacht ein Schatten – schrill und furchterregend! Doch nicht nur d",
+   "veröffentlichungsdatum": "1980-03-31",
+   "gesamtdauer": 2640320,
+   "sprechrollen": [
+    {
+     "rolle": "Hitchcock, Erzähler",
+     "sprecher": "Peter Pasetti"
+    },
+    {
+     "rolle": "Justus Jonas, Erster Detektiv",
+     "sprecher": "Oliver Rohrbeck"
+    },
+    {
+     "rolle": "Peter Shaw, Zweiter Detektiv",
+     "sprecher": "Jens Wawrczeck"
+    },
+    {
+     "rolle": "Bob Andrews, Recherchen und Archiv",
+     "sprecher": "Andreas Fröhlich"
+    },
+    {
+     "rolle": "Tante Mathilda",
+     "sprecher": "Karin Lieneweg"
+    },
+    {
+     "rolle": "Mr. Harris",
+     "sprecher": "Günther Heising"
+    },
+    {
+     "rolle": "Miss Sanchez",
+     "sprecher": "Cordula Hubrich",
+     "pseudonym": "Marlene Lindner"
+    },
+    {
+     "rolle": "Ted Sanchez",
+     "sprecher": "Nicolas Körting"
+    },
+    {
+     "rolle": "Sanders",
+     "sprecher": "Torsten Sense"
+    },
+    {
+     "rolle": "Skinny Norris",
+     "sprecher": "Andreas von der Meden"
+    },
+    {
+     "rolle": "Natches",
+     "sprecher": "Gernot Endemann"
+    },
+    {
+     "rolle": "Kommissar Reynolds",
+     "sprecher": "Horst Frank"
+    },
+    {
+     "rolle": "Prof. Meeker",
+     "sprecher": "Josef Dahmen"
+    },
+    {
+     "rolle": "Morton",
+     "sprecher": "Andreas von der Meden"
+    },
+    {
+     "rolle": "Polizist",
+     "sprecher": "Joachim Wolff"
+    }
+   ],
+   "links": {
+    "cover": "http://dreimetadaten.de/data/Serie/013/cover.png",
+    "cover_itunes": "http://a1.mzstatic.com/us/r30/Music71/v4/35/d3/83/35d383d4-7cf8-4fc9-4a06-2197ae82f46b/source",
+    "cover_kosmos": "http://web.archive.org/web/20220115045338if_/https://s3.eu-central-1.amazonaws.com/kosmos.de/media/image/34/9e/1c/0743213881324.jpg",
+    "cover_dreifragezeichen": "https://cdn-p.smehost.net/sites/374be6422f2b494ab9128079a4bd7dfd/produkte/hoerspiele/ddf_cd_013.jpg",
+    "amazon": "https://www.amazon.de/gp/product/B00005Q4XE"
+   },
+   "ids": {
+    "dreimetadaten": 13,
+    "appleMusic": "1092534668",
+    "spotify": "2AZ7zFBophWEIuBPjAG60I",
+    "bookbeat": "534611",
+    "amazonMusic": "B01CV1EMY0",
+    "amazon": "B00005Q4XE",
+    "youTubeMusic": "MPREb_BFErzMjyTt6",
+    "deezer": "12818212"
+   },
+   "medien": [
+    {
+     "tracks": [
+      {
+       "titel": "Der Schatz der Chumash",
+       "start": 2346280,
+       "end": 2640320
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "nummer": 36,
+   "titel": "und der Super-Wal",
+   "autor": "Marc Brandel",
+   "hörspielskriptautor": "H. G. Francis",
+   "beschreibung": "Ein gestrandeter Wal ist im privaten Schwimmbecken eines gewissen Mr. Slater untergebracht und wird dort von Constance a",
+   "veröffentlichungsdatum": "1985-05-29",
+   "gesamtdauer": 2896187,
+   "sprechrollen": [
+    {
+     "rolle": "Hitchcock, Erzähler",
+     "sprecher": "Peter Pasetti"
+    },
+    {
+     "rolle": "Justus Jonas, Erster Detektiv",
+     "sprecher": "Oliver Rohrbeck"
+    },
+    {
+     "rolle": "Peter Shaw, Zweiter Detektiv",
+     "sprecher": "Jens Wawrczeck"
+    },
+    {
+     "rolle": "Bob Andrews, Recherchen und Archiv",
+     "sprecher": "Andreas Fröhlich"
+    },
+    {
+     "rolle": "Constance",
+     "sprecher": "Heidi Schaffrath"
+    },
+    {
+     "rolle": "Slater",
+     "sprecher": "Helmut Ahner"
+    },
+    {
+     "rolle": "Donner",
+     "sprecher": "Jürgen Thormann"
+    },
+    {
+     "rolle": "Kommissar Reynolds",
+     "sprecher": "Horst Frank"
+    },
+    {
+     "rolle": "Fischer",
+     "sprecher": "Franz-Josef Steffens"
+    },
+    {
+     "rolle": "Ocean-World-Mitarbeiter",
+     "sprecher": "Peter Lakenmacher, Christian Rode"
+    }
+   ],
+   "links": {
+    "cover": "http://dreimetadaten.de/data/Serie/036/cover.png",
+    "cover_itunes": "http://a1.mzstatic.com/us/r30/Music18/v4/3c/cd/bd/3ccdbd8b-6b79-5dd4-bf11-2ca8e42779cb/source",
+    "cover_kosmos": "http://web.archive.org/web/20220111212322if_/https://s3.eu-central-1.amazonaws.com/kosmos.de/media/image/e5/a8/e4/0743213883625.jpg",
+    "cover_dreifragezeichen": "https://cdn-p.smehost.net/sites/374be6422f2b494ab9128079a4bd7dfd/produkte/hoerspiele/ddf_cd_036.jpg",
+    "amazon": "https://www.amazon.de/gp/product/B00005Q4Y4"
+   },
+   "ids": {
+    "dreimetadaten": 36,
+    "appleMusic": "1092537257",
+    "spotify": "4R24oyyqxGkczNpqWGCXBZ",
+    "bookbeat": "534658",
+    "amazonMusic": "B01CV1CIPA",
+    "amazon": "B00005Q4Y4",
+    "youTubeMusic": "MPREb_Ifi25IQmfTn",
+    "deezer": "13086796"
+   },
+   "medien": [
+    {
+     "tracks": [
+      {
+       "titel": "Was in der Kassette war",
+       "start": 2524133,
+       "end": 2896187
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "nummer": 100,
+   "titel": "Toteninsel",
+   "autor": "André Marx",
+   "hörspielskriptautor": "André Minninger",
+   "beschreibung": "Die drei ??? übernehmen ihren 100sten Fall! In drei spannenden Folgen sind sie dem Geheimnis der Toteninsel auf der Spur",
+   "veröffentlichungsdatum": "2001-10-15",
+   "gesamtdauer": 9991866,
+   "sprechrollen": [
+    {
+     "rolle": "Erzähler",
+     "sprecher": "Matthias Fuchs"
+    },
+    {
+     "rolle": "Justus Jonas, Erster Detektiv",
+     "sprecher": "Oliver Rohrbeck"
+    },
+    {
+     "rolle": "Peter Shaw, Zweiter Detektiv",
+     "sprecher": "Jens Wawrczeck"
+    },
+    {
+     "rolle": "Bob Andrews, Recherchen und Archiv",
+     "sprecher": "Andreas Fröhlich"
+    },
+    {
+     "rolle": "Skinny Norris",
+     "sprecher": "Andreas von der Meden"
+    },
+    {
+     "rolle": "Morton",
+     "sprecher": "Andreas von der Meden"
+    },
+    {
+     "rolle": "Jelena Charkova",
+     "sprecher": "Alexandra Doerk"
+    },
+    {
+     "rolle": "Dr. Svenson",
+     "sprecher": "Antje Roosch"
+    },
+    {
+     "rolle": "Mr. Schwarz",
+     "sprecher": "Erik Schäffler"
+    },
+    {
+     "rolle": "Mr. Olin",
+     "sprecher": "Uli Krohm"
+    },
+    {
+     "rolle": "Juan",
+     "sprecher": "Oliver Böttcher"
+    },
+    {
+     "rolle": "Professor Phoenix",
+     "sprecher": "Winfried Glatzeder"
+    },
+    {
+     "rolle": "Rachel Hadden",
+     "sprecher": "Anna Carlsson"
+    },
+    {
+     "rolle": "Al",
+     "sprecher": "Nicolas König"
+    },
+    {
+     "rolle": "Anne",
+     "sprecher": "Corinna Wodrich"
+    }
+   ],
+   "links": {
+    "cover": "http://dreimetadaten.de/data/Serie/100/cover.png",
+    "cover_itunes": "http://a1.mzstatic.com/us/r30/Music60/v4/24/bc/06/24bc0600-02b8-1f37-dc33-7a30f9634ebd/source",
+    "cover_kosmos": "http://web.archive.org/web/20220115135349if_/https://s3.eu-central-1.amazonaws.com/kosmos.de/media/image/a0/2a/de/0743218420627.jpg",
+    "cover_dreifragezeichen": "https://cdn-p.smehost.net/sites/374be6422f2b494ab9128079a4bd7dfd/produkte/hoerspiele/ddf_cd_100.jpg",
+    "amazon": "https://www.amazon.de/gp/product/B00005OBYS"
+   },
+   "ids": {
+    "dreimetadaten": 100,
+    "appleMusic": "1112996835",
+    "spotify": "6zwBnyiy9Hy9TAser0DOuL",
+    "bookbeat": "534766",
+    "amazonMusic": "B01FIM4KKU",
+    "amazon": "B00005OBYS",
+    "youTubeMusic": "MPREb_rTJZ10YuZau",
+    "deezer": "13731970"
+   },
+   "medien": [
+    {
+     "tracks": [
+      {
+       "titel": "Das Geisterschiff",
+       "start": 2660453,
+       "end": 3204573
+      }
+     ]
+    },
+    {
+     "tracks": [
+      {
+       "titel": "Nacht in Angst",
+       "start": 2922893,
+       "end": 3376800
+      }
+     ]
+    },
+    {
+     "tracks": [
+      {
+       "titel": "Tödliche Spur",
+       "start": 2721600,
+       "end": 3410493
+      }
+     ]
+    }
+   ],
+   "teile": [
+    {
+     "teilNummer": 1,
+     "titel": "Das Rätsel der Sphinx"
+    },
+    {
+     "teilNummer": 2,
+     "titel": "Das vergessene Volk"
+    },
+    {
+     "teilNummer": 3,
+     "titel": "Der Fluch der Gräber"
+    }
+   ]
+  }
+ ],
+ "spezial": [
+  {
+   "titel": "Master of Chess (Live & Unplugged)",
+   "autor": "Stefanie Burkart",
+   "hörspielskriptautor": "Andreas Fröhlich",
+   "beschreibung": "Eine Autopanne im strömenden Regen zwingt die drei ??? – Justus, Peter und Bob – dazu, Zuflucht auf Schloss Blackstone z",
+   "veröffentlichungsdatum": "2002-11-11",
+   "gesamtdauer": 6320493,
+   "sprechrollen": [
+    {
+     "rolle": "Erzähler",
+     "sprecher": "Helmut Krauss"
+    },
+    {
+     "rolle": "Justus Jonas, Erster Detektiv",
+     "sprecher": "Oliver Rohrbeck"
+    },
+    {
+     "rolle": "Peter Shaw, Zweiter Detektiv",
+     "sprecher": "Jens Wawrczeck"
+    },
+    {
+     "rolle": "Bob Andrews, Recherchen und Archiv",
+     "sprecher": "Andreas Fröhlich"
+    },
+    {
+     "rolle": "Ana",
+     "sprecher": "Frauke Poolman"
+    },
+    {
+     "rolle": "Gräfin",
+     "sprecher": "Frauke Poolman"
+    },
+    {
+     "rolle": "Virginia Burnett",
+     "sprecher": "Frauke Poolman"
+    },
+    {
+     "rolle": "Graf",
+     "sprecher": "Olaf Kreutzenbeck"
+    },
+    {
+     "rolle": "Moe",
+     "sprecher": "Olaf Kreutzenbeck"
+    },
+    {
+     "rolle": "Passfellow",
+     "sprecher": "Olaf Kreutzenbeck"
+    }
+   ],
+   "links": {
+    "cover": "http://dreimetadaten.de/data/Spezial/Master-of-Chess-Live--Unplugged/cover.png",
+    "cover_itunes": "http://a1.mzstatic.com/r40/Music69/v4/70/72/c3/7072c380-c667-6b96-e17f-28e20a71b5cd/886445749342.jpg",
+    "amazon": "https://www.amazon.de/gp/product/B00006YXOJ"
+   },
+   "ids": {
+    "dreimetadaten": 413,
+    "appleMusic": "1092551485",
+    "spotify": "4uJPgDMOIRfoAumwwmpRbR",
+    "bookbeat": "534787",
+    "amazonMusic": "B01CV1D3DQ",
+    "amazon": "B00006YXOJ",
+    "youTubeMusic": "MPREb_zSanf1hlYJR",
+    "deezer": "12761804"
+   },
+   "medien": [
+    {
+     "tracks": [
+      {
+       "titel": "Rätselhafte Verse",
+       "start": 2877373,
+       "end": 3383733
+      }
+     ]
+    },
+    {
+     "tracks": [
+      {
+       "titel": "Outtake Köln 2: \"Das geschieht euch recht!\"",
+       "start": 4651240,
+       "end": 4693853
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "titel": "und der Super-Papagei 2004",
+   "autor": "Robert Arthur",
+   "hörspielskriptautor": "André Minninger",
+   "beschreibung": "Das ist wirklich ein spezial gelagerter Sonderfall: Warum zitieren Papageien sonderbare Sprüche falsch? Was hat Sherlock",
+   "veröffentlichungsdatum": "2004-10-04",
+   "gesamtdauer": 5400067,
+   "sprechrollen": [
+    {
+     "rolle": "Erzähler",
+     "sprecher": "Thomas Fritsch"
+    },
+    {
+     "rolle": "Justus Jonas, Erster Detektiv",
+     "sprecher": "Oliver Rohrbeck"
+    },
+    {
+     "rolle": "Peter Shaw, Zweiter Detektiv",
+     "sprecher": "Jens Wawrczeck"
+    },
+    {
+     "rolle": "Bob Andrews, Recherchen und Archiv",
+     "sprecher": "Andreas Fröhlich"
+    },
+    {
+     "rolle": "Skinny Norris",
+     "sprecher": "Andreas von der Meden"
+    },
+    {
+     "rolle": "Mr. Claudius, Kunsthändler",
+     "sprecher": "Gerlach Fiedler"
+    },
+    {
+     "rolle": "Mrs. Claudius",
+     "sprecher": "Brigitte Böttrich"
+    },
+    {
+     "rolle": "Mr. Fentriss, Schriftsteller",
+     "sprecher": "Detlef Bierstedt"
+    },
+    {
+     "rolle": "Hugenay",
+     "sprecher": "Wolfgang Kubach"
+    },
+    {
+     "rolle": "Carlos",
+     "sprecher": "Stefan Brönneke"
+    },
+    {
+     "rolle": "Onkel Ramos",
+     "sprecher": "Detlef Bierstedt",
+     "pseudonym": "Dario Bertoli"
+    },
+    {
+     "rolle": "Morton",
+     "sprecher": "Andreas von der Meden"
+    },
+    {
+     "rolle": "Opa",
+     "sprecher": "Harry Rowohlt"
+    },
+    {
+     "rolle": "Miss Waggoner",
+     "sprecher": "Ursula Vogel"
+    },
+    {
+     "rolle": "Senora",
+     "sprecher": "Barbara Benuel"
+    }
+   ],
+   "links": {
+    "cover": "http://dreimetadaten.de/data/Spezial/und-der-Super-Papagei-2004/cover.png",
+    "cover_itunes": "http://a1.mzstatic.com/r40/Music49/v4/c8/5e/27/c85e2753-96d6-5361-5fcd-62c30788f409/886445749311.jpg",
+    "cover_dreifragezeichen": "https://cdn-p.smehost.net/sites/374be6422f2b494ab9128079a4bd7dfd/produkte/hoerspiele/ddf-superpapagei-2004.jpeg",
+    "amazon": "https://www.amazon.de/gp/product/B0002E48QQ"
+   },
+   "ids": {
+    "dreimetadaten": 122,
+    "appleMusic": "1092550463",
+    "spotify": "4KXnXnpFRnQsjeZHpNC7X9",
+    "bookbeat": "534902",
+    "amazonMusic": "B01CV1BBLM",
+    "amazon": "B0002E48QQ",
+    "youTubeMusic": "MPREb_6cKhBgCr5Yw",
+    "deezer": "12761834"
+   },
+   "medien": [
+    {
+     "tracks": [
+      {
+       "titel": "Robin Hood",
+       "start": 3178987,
+       "end": 3418440
+      }
+     ]
+    },
+    {
+     "tracks": [
+      {
+       "titel": "Half Moon Bay",
+       "start": 3246733,
+       "end": 3564173
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "titel": "und der dreiTag",
+   "autor": "Hendrik Buchna, Tim Wenderoth, Ivar Leon Menger",
+   "hörspielskriptautor": "André Minninger",
+   "beschreibung": "Kann ein und derselbe Tag dreimal völlig unterschiedlich verlaufen? Kann ein unscheinbares Detail wie ein Colaglas darüb",
+   "veröffentlichungsdatum": "2010-10-01",
+   "gesamtdauer": 13078093,
+   "sprechrollen": [
+    {
+     "rolle": "Erzähler",
+     "sprecher": "Thomas Fritsch"
+    },
+    {
+     "rolle": "Justus Jonas, Erster Detektiv",
+     "sprecher": "Oliver Rohrbeck"
+    },
+    {
+     "rolle": "Peter Shaw, Zweiter Detektiv",
+     "sprecher": "Jens Wawrczeck"
+    },
+    {
+     "rolle": "Bob Andrews, Recherchen und Archiv",
+     "sprecher": "Andreas Fröhlich"
+    },
+    {
+     "rolle": "Tante Mathilda",
+     "sprecher": "Karin Lieneweg"
+    },
+    {
+     "rolle": "Onkel Titus",
+     "sprecher": "Andreas E. Beurmann",
+     "pseudonym": "Hans Meinhardt"
+    },
+    {
+     "rolle": "Inspektor Cotta",
+     "sprecher": "Holger Mahlich"
+    },
+    {
+     "rolle": "Officer Flann Doyle",
+     "sprecher": "Douglas Welbat"
+    },
+    {
+     "rolle": "Tanya Sullivan",
+     "sprecher": "Marion Elskis"
+    },
+    {
+     "rolle": "Sebastian Dawson",
+     "sprecher": "Bastian Pastewka"
+    },
+    {
+     "rolle": "Miss Tomkins",
+     "sprecher": "Stephanie Damare"
+    },
+    {
+     "rolle": "Mr. Foley",
+     "sprecher": "Dirk Bach"
+    },
+    {
+     "rolle": "John Gabbin",
+     "sprecher": "Tobias Schmidt"
+    },
+    {
+     "rolle": "Matthew Gabbin",
+     "sprecher": "Jürgen Thormann"
+    },
+    {
+     "rolle": "Georgina",
+     "sprecher": "Maud Ackermann"
+    },
+    {
+     "rolle": "Gil Renard",
+     "sprecher": "Udo Schenk"
+    },
+    {
+     "rolle": "Hedy Carlson",
+     "sprecher": "Luise Helm"
+    },
+    {
+     "rolle": "Steve",
+     "sprecher": "Sascha Draeger"
+    },
+    {
+     "rolle": "Jack",
+     "sprecher": "Hendrik Buchna"
+    },
+    {
+     "rolle": "Laury",
+     "sprecher": "Rhea Harder-Vennewald"
+    },
+    {
+     "rolle": "Gast 1",
+     "sprecher": "Christian Senger"
+    },
+    {
+     "rolle": "Fahrerin",
+     "sprecher": "Corinna Wodrich"
+    },
+    {
+     "rolle": "Radiosprecher",
+     "sprecher": "Tobias Meister"
+    },
+    {
+     "rolle": "Peter Foster",
+     "sprecher": "Gerrit Schmidt-Foß"
+    },
+    {
+     "rolle": "Mrs. Shaw",
+     "sprecher": "Isabella Grothe"
+    },
+    {
+     "rolle": "Annie Wilkes",
+     "sprecher": "Regina Lemnitz"
+    },
+    {
+     "rolle": "Mädchen 1",
+     "sprecher": "Katinka Körting"
+    },
+    {
+     "rolle": "Mädchen 2",
+     "sprecher": "Jacqueline Meybauer"
+    },
+    {
+     "rolle": "Alter Mann",
+     "sprecher": "Jörg Gillner"
+    },
+    {
+     "rolle": "Junger Mann",
+     "sprecher": "Patrick Bach"
+    },
+    {
+     "rolle": "Dick Perry",
+     "sprecher": "Ernst H. Hilbich"
+    },
+    {
+     "rolle": "Mr. Andrews",
+     "sprecher": "Henry König"
+    },
+    {
+     "rolle": "Miss Bennett",
+     "sprecher": "Renate Pichler"
+    },
+    {
+     "rolle": "Walter Bush",
+     "sprecher": "Rolf E. Schenker"
+    },
+    {
+     "rolle": "Ian Bush",
+     "sprecher": "Sky du Mont, Lukas T. Sperber"
+    },
+    {
+     "rolle": "Jimmy Sinclair",
+     "sprecher": "Siegfried W. Kernen, Nils Noller"
+    },
+    {
+     "rolle": "Charlie Parker",
+     "sprecher": "Oliver Böttcher, Laurence Kalaidjian"
+    },
+    {
+     "rolle": "Brianna Jackson",
+     "sprecher": "Hansi Jochmann, Natalie Demtrøder"
+    },
+    {
+     "rolle": "Chloe Smathers",
+     "sprecher": "Valerie Demtrøder"
+    },
+    {
+     "rolle": "Joseph Quick",
+     "sprecher": "Harry Rowohlt"
+    },
+    {
+     "rolle": "Mr. Raynes",
+     "sprecher": "Olaf Kreutzenbeck"
+    },
+    {
+     "rolle": "Jeff White",
+     "sprecher": "Horst Naumann"
+    },
+    {
+     "rolle": "Bedienung",
+     "sprecher": "Tim Wenderoth"
+    },
+    {
+     "rolle": "Gast 2",
+     "sprecher": "Andreas Otto"
+    },
+    {
+     "rolle": "Sekretärin",
+     "sprecher": "Corinna Wodrich"
+    }
+   ],
+   "links": {
+    "cover": "http://dreimetadaten.de/data/Spezial/und-der-dreiTag/cover.png",
+    "cover_itunes": "http://a1.mzstatic.com/r40/Music49/v4/9a/dd/ec/9addece3-1886-3728-fd48-67a93c04e5f0/886445749281.jpg",
+    "cover_dreifragezeichen": "https://cdn-p.smehost.net/sites/374be6422f2b494ab9128079a4bd7dfd/produkte/hoerspiele/ddf_sp_cd_dreitag.jpg",
+    "amazon": "https://www.amazon.de/gp/product/B003HEE4LM"
+   },
+   "ids": {
+    "dreimetadaten": 160,
+    "appleMusic": "1092548111",
+    "spotify": "3JJeehFIJTxhrltC6e44VT",
+    "bookbeat": "535017",
+    "amazonMusic": "B01CV19RP4",
+    "amazon": "B003HEE4LM",
+    "youTubeMusic": "MPREb_FkxFDU3nyUl",
+    "deezer": "12761802"
+   },
+   "medien": [
+    {
+     "tracks": [
+      {
+       "titel": "Triumph",
+       "start": 4589640,
+       "end": 4757160
+      }
+     ]
+    },
+    {
+     "tracks": [
+      {
+       "titel": "Rote Farbe",
+       "start": 3353253,
+       "end": 3904933
+      }
+     ]
+    },
+    {
+     "tracks": [
+      {
+       "titel": "Darf ich reinkommen?",
+       "start": 3978200,
+       "end": 4416000
+      }
+     ]
+    }
+   ],
+   "teile": [
+    {
+     "teilNummer": 1,
+     "titel": "Sicht J: Der Fluch der Sheldon Street"
+    },
+    {
+     "teilNummer": 2,
+     "titel": "Sicht B: Im Zeichen der Ritter"
+    },
+    {
+     "teilNummer": 3,
+     "titel": "Sicht P: Fremder Freund"
+    }
+   ]
+  }
+ ],
+ "kurzgeschichten": [
+  {
+   "titel": "und die Geisterlampe",
+   "autor": "Kari Erlhoff, Marco Sonnleitner, Hendrik Buchna",
+   "hörspielskriptautor": "André Minninger",
+   "beschreibung": "Das gab es noch nie:\n12 Mini-Fälle der drei ???.\nDie drei Autoren Kari Erlhoff, Hendrik Buchna und Marco Sonnleitner erz",
+   "veröffentlichungsdatum": "2012-09-28",
+   "gesamtdauer": 10299360,
+   "sprechrollen": [
+    {
+     "rolle": "Erzähler",
+     "sprecher": "Thomas Fritsch"
+    },
+    {
+     "rolle": "Justus Jonas, Erster Detektiv",
+     "sprecher": "Oliver Rohrbeck"
+    },
+    {
+     "rolle": "Peter Shaw, Zweiter Detektiv",
+     "sprecher": "Jens Wawrczeck"
+    },
+    {
+     "rolle": "Bob Andrews, Recherchen und Archiv",
+     "sprecher": "Andreas Fröhlich"
+    },
+    {
+     "rolle": "Mr. Vancura",
+     "sprecher": "Lutz Herkenrath"
+    },
+    {
+     "rolle": "Mrs. Fox",
+     "sprecher": "Susan Jarling"
+    },
+    {
+     "rolle": "Inspektor Cotta",
+     "sprecher": "Holger Mahlich"
+    },
+    {
+     "rolle": "Mr. Shaw",
+     "sprecher": "Rasmus Borowski"
+    },
+    {
+     "rolle": "Shannon",
+     "sprecher": "Kerstin Draeger"
+    },
+    {
+     "rolle": "Mr. Mosley",
+     "sprecher": "Neil Malik Abdullah"
+    },
+    {
+     "rolle": "Cowboy",
+     "sprecher": "Achim Schülke"
+    },
+    {
+     "rolle": "Patricia",
+     "sprecher": "Rhea Harder-Vennewald"
+    },
+    {
+     "rolle": "Peter Shawn",
+     "sprecher": "Leonhard Mahlich"
+    },
+    {
+     "rolle": "Marty",
+     "sprecher": "Philipp Draeger"
+    },
+    {
+     "rolle": "Fred",
+     "sprecher": "Guido Bernadotte"
+    },
+    {
+     "rolle": "Mrs. Floyd",
+     "sprecher": "Gabriele Libbach"
+    },
+    {
+     "rolle": "Tante Mathilda",
+     "sprecher": "Karin Lieneweg"
+    },
+    {
+     "rolle": "Vincent Grimes",
+     "sprecher": "Konstantin Graudus"
+    },
+    {
+     "rolle": "Blacky",
+     "sprecher": "Heikedine Körting"
+    },
+    {
+     "rolle": "Juliet",
+     "sprecher": "Anne Moll"
+    },
+    {
+     "rolle": "Scott",
+     "sprecher": "Tommaso Cacciapuoti"
+    },
+    {
+     "rolle": "John",
+     "sprecher": "Sascha Draeger",
+     "pseudonym": "Martin Sichel"
+    },
+    {
+     "rolle": "Kelly",
+     "sprecher": "Juliane Szalay"
+    },
+    {
+     "rolle": "Norman",
+     "sprecher": "Eckart Dux"
+    },
+    {
+     "rolle": "Mr. Darrow",
+     "sprecher": "Joachim Kappl"
+    },
+    {
+     "rolle": "Frau",
+     "sprecher": "Anja Topf"
+    },
+    {
+     "rolle": "Mann 1",
+     "sprecher": "Thor W. Müller"
+    },
+    {
+     "rolle": "Mann 2",
+     "sprecher": "Helgo Liebig"
+    },
+    {
+     "rolle": "Mann 3",
+     "sprecher": "Rasmus Rakete"
+    },
+    {
+     "rolle": "Mann 4",
+     "sprecher": "Patrick Perales"
+    },
+    {
+     "rolle": "Mann 5",
+     "sprecher": "Patrick Bach"
+    },
+    {
+     "rolle": "Mann 6",
+     "sprecher": "Frank Meyer-Brockmann"
+    },
+    {
+     "rolle": "Mann 7",
+     "sprecher": "Roy Martens"
+    }
+   ],
+   "links": {
+    "cover": "http://dreimetadaten.de/data/Kurzgeschichten/und-die-Geisterlampe/cover.png",
+    "cover_dreifragezeichen": "https://cdn-p.smehost.net/sites/374be6422f2b494ab9128079a4bd7dfd/produkte/hoerspiele/ddf_sp_cd_12-k.jpg",
+    "amazon": "https://www.amazon.de/gp/product/B008L8OG8K"
+   },
+   "ids": {
+    "dreimetadaten": 186,
+    "appleMusic": "1092546618",
+    "spotify": "1nL3AddBvZ845zMyXRowgs",
+    "bookbeat": "534932",
+    "amazonMusic": "B01CV1B34M",
+    "amazon": "B008L8OG8K",
+    "youTubeMusic": "MPREb_OapVHfFET5a",
+    "deezer": "12761852"
+   },
+   "medien": [
+    {
+     "tracks": [
+      {
+       "titel": "Verschwörung auf der Eagle Ranch",
+       "start": 2650187,
+       "end": 4017840
+      }
+     ]
+    },
+    {
+     "tracks": [
+      {
+       "titel": "Das Rätsel der schwarzen Nadel",
+       "start": 1967360,
+       "end": 2679040
+      }
+     ]
+    },
+    {
+     "tracks": [
+      {
+       "titel": "Jagd auf den Weihnachtsmann",
+       "start": 2681040,
+       "end": 3602480
+      }
+     ]
+    }
+   ],
+   "teile": [
+    {
+     "teilNummer": 1,
+     "titel": "und die Geisterlampe"
+    },
+    {
+     "teilNummer": 2,
+     "titel": "Dunkle Vergangenheit"
+    },
+    {
+     "teilNummer": 3,
+     "titel": "Entführt"
+    },
+    {
+     "teilNummer": 4,
+     "titel": "Verschwörung auf der Eagle Ranch"
+    },
+    {
+     "teilNummer": 5,
+     "titel": "SOS"
+    },
+    {
+     "teilNummer": 6,
+     "titel": "Der graue Dämon"
+    },
+    {
+     "teilNummer": 7,
+     "titel": "Das Lehrstück"
+    },
+    {
+     "teilNummer": 8,
+     "titel": "Das Rätsel der schwarzen Nadel"
+    },
+    {
+     "teilNummer": 9,
+     "titel": "Der verschwundene Superstar"
+    },
+    {
+     "teilNummer": 10,
+     "titel": "Manches verlernt man nie"
+    },
+    {
+     "teilNummer": 11,
+     "titel": "Psychomoon"
+    },
+    {
+     "teilNummer": 12,
+     "titel": "Jagd auf den Weihnachtsmann"
+    }
+   ]
+  },
+  {
+   "titel": "Das Rätsel der Sieben",
+   "autor": "André Minninger, Kari Erlhoff, Hendrik Buchna, Marco Sonnleitner, Ben Nevis, Christoph Dittert, André Marx",
+   "hörspielskriptautor": "André Minninger",
+   "beschreibung": "Sieben Kurzgeschichten von sieben Autoren in einer Hörspiel-Box: Bei diesen Fällen wird so rasant ermittelt, dass die Lö",
+   "veröffentlichungsdatum": "2014-02-21",
+   "gesamtdauer": 9720654,
+   "sprechrollen": [
+    {
+     "rolle": "Erzähler",
+     "sprecher": "Thomas Fritsch"
+    },
+    {
+     "rolle": "Justus Jonas, Erster Detektiv",
+     "sprecher": "Oliver Rohrbeck"
+    },
+    {
+     "rolle": "Peter Shaw, Zweiter Detektiv",
+     "sprecher": "Jens Wawrczeck"
+    },
+    {
+     "rolle": "Bob Andrews, Recherchen und Archiv",
+     "sprecher": "Andreas Fröhlich"
+    },
+    {
+     "rolle": "Emily White",
+     "sprecher": "Sabine Hahn"
+    },
+    {
+     "rolle": "Judy Fradkin",
+     "sprecher": "Ursula Heyer"
+    },
+    {
+     "rolle": "Aladin",
+     "sprecher": "Heidi Schaffrath"
+    },
+    {
+     "rolle": "Aschenputtel",
+     "sprecher": "Regina Lemnitz"
+    },
+    {
+     "rolle": "Prinzessin",
+     "sprecher": "Renate Pichler"
+    },
+    {
+     "rolle": "Rotkäppchen",
+     "sprecher": "Angela Stresemann"
+    },
+    {
+     "rolle": "Meerjungfrau",
+     "sprecher": "Heikedine Körting",
+     "pseudonym": "Pamela Punti"
+    },
+    {
+     "rolle": "Mr. Andrews",
+     "sprecher": "Henry König"
+    },
+    {
+     "rolle": "Mrs. Andrews",
+     "sprecher": "Konstanze Ullmer"
+    },
+    {
+     "rolle": "Arzt",
+     "sprecher": "Erik Schäffler"
+    },
+    {
+     "rolle": "Mrs. Wallace",
+     "sprecher": "Angela Stresemann"
+    },
+    {
+     "rolle": "Bobby",
+     "sprecher": "Merete Brettschneider"
+    },
+    {
+     "rolle": "Tante Mathilda",
+     "sprecher": "Karin Lieneweg"
+    },
+    {
+     "rolle": "Onkel Titus",
+     "sprecher": "Andreas E. Beurmann",
+     "pseudonym": "Hans Meinhardt"
+    },
+    {
+     "rolle": "Croupier",
+     "sprecher": "Gosta Liptow"
+    },
+    {
+     "rolle": "Carl Hopkins, Physiker",
+     "sprecher": "Ben Hecker"
+    },
+    {
+     "rolle": "Miller, Schiffsdetektiv",
+     "sprecher": "Michael Grimm"
+    },
+    {
+     "rolle": "Kapitän Sherwood",
+     "sprecher": "Horst Naumann"
+    },
+    {
+     "rolle": "Theodore Quaid",
+     "sprecher": "Dietrich Adam"
+    },
+    {
+     "rolle": "Jamie Peterson, Barmann",
+     "sprecher": "Patrick Bach"
+    },
+    {
+     "rolle": "Handerson",
+     "sprecher": "Wolfgang Rositzka"
+    },
+    {
+     "rolle": "Diego",
+     "sprecher": "Stephan Benson"
+    },
+    {
+     "rolle": "Mercedes",
+     "sprecher": "Hella von der Osten-Sacken",
+     "pseudonym": "Wanda Osten"
+    },
+    {
+     "rolle": "Nayeli",
+     "sprecher": "Stefan Brönneke"
+    },
+    {
+     "rolle": "Barker",
+     "sprecher": "Ben Hecker"
+    },
+    {
+     "rolle": "Off-Sprecherin",
+     "sprecher": "Claudia Stocksieker"
+    },
+    {
+     "rolle": "Ian Carew",
+     "sprecher": "Sascha Draeger"
+    }
+   ],
+   "links": {
+    "cover": "http://dreimetadaten.de/data/Kurzgeschichten/Das-Raetsel-der-Sieben/cover.png",
+    "cover_dreifragezeichen": "https://cdn-p.smehost.net/sites/374be6422f2b494ab9128079a4bd7dfd/produkte/hoerspiele/ddf-raetsel-der-sieben.jpeg",
+    "amazon": "https://www.amazon.de/gp/product/B00H5DNBKQ"
+   },
+   "ids": {
+    "dreimetadaten": 210,
+    "appleMusic": "1092549930",
+    "spotify": "2AEzTekSWfyfzJH56jmhET",
+    "bookbeat": "534898",
+    "amazonMusic": "B01CV1AZ64",
+    "amazon": "B00H5DNBKQ",
+    "youTubeMusic": "MPREb_vwIe8fywkgK",
+    "deezer": "12761844"
+   },
+   "medien": [
+    {
+     "tracks": [
+      {
+       "titel": "Bis um sieben zurück – Bobby",
+       "start": 2796560,
+       "end": 3073920
+      }
+     ]
+    },
+    {
+     "tracks": [
+      {
+       "titel": "Die rote Sieben – Abgekartetes Spiel",
+       "start": 2303627,
+       "end": 2748267
+      }
+     ]
+    },
+    {
+     "tracks": [
+      {
+       "titel": "Die verschwundene Torte – Des Rätsels Lösung",
+       "start": 3327240,
+       "end": 3898467
+      }
+     ]
+    }
+   ],
+   "teile": [
+    {
+     "teilNummer": 1,
+     "titel": "Der siebte Gast"
+    },
+    {
+     "teilNummer": 2,
+     "titel": "Bis um sieben zurück"
+    },
+    {
+     "teilNummer": 3,
+     "titel": "Bobs schwerste Stunde"
+    },
+    {
+     "teilNummer": 4,
+     "titel": "Die rote Sieben"
+    },
+    {
+     "teilNummer": 5,
+     "titel": "Schutzgeld"
+    },
+    {
+     "teilNummer": 6,
+     "titel": "Die siebte Frau des Leuchters"
+    },
+    {
+     "teilNummer": 7,
+     "titel": "Die verschwundene Torte"
+    }
+   ]
+  },
+  {
+   "titel": "und der Zeitgeist",
+   "autor": "Hendrik Buchna, Marco Sonnleitner, André Minninger, Ben Nevis, André Marx, Christoph Dittert, Kari Erlhoff",
+   "hörspielskriptautor": "André Minninger",
+   "beschreibung": "Die drei ??? übernehmen jeden Fall. Da gibt's immer Überraschungen, ungeahnte Wendungen – und manchmal kommt alles wirkl",
+   "veröffentlichungsdatum": "2016-03-04",
+   "gesamtdauer": 8221640,
+   "sprechrollen": [
+    {
+     "rolle": "Erzähler",
+     "sprecher": "Thomas Fritsch"
+    },
+    {
+     "rolle": "Justus Jonas, Erster Detektiv",
+     "sprecher": "Oliver Rohrbeck"
+    },
+    {
+     "rolle": "Peter Shaw, Zweiter Detektiv",
+     "sprecher": "Jens Wawrczeck"
+    },
+    {
+     "rolle": "Bob Andrews, Recherchen und Archiv",
+     "sprecher": "Andreas Fröhlich"
+    },
+    {
+     "rolle": "Hüne",
+     "sprecher": "Johannes Semm"
+    },
+    {
+     "rolle": "Marvin Gray",
+     "sprecher": "Horst Stark"
+    },
+    {
+     "rolle": "Nancy McMonigal",
+     "sprecher": "Gerlinde Dillge"
+    },
+    {
+     "rolle": "Tom",
+     "sprecher": "Wolfgang Rositzka"
+    },
+    {
+     "rolle": "Rod",
+     "sprecher": "Herbert Tennigkeit"
+    },
+    {
+     "rolle": "Joe",
+     "sprecher": "Olaf Reichmann"
+    },
+    {
+     "rolle": "Ben",
+     "sprecher": "Stephan Chrzescinski"
+    },
+    {
+     "rolle": "Mariann",
+     "sprecher": "Simone Ritscher"
+    },
+    {
+     "rolle": "TV-Sprecher",
+     "sprecher": "Holger Wemhoff"
+    },
+    {
+     "rolle": "Malcolm Fever",
+     "sprecher": "Tilo Schmitz"
+    },
+    {
+     "rolle": "Lucy Hopkins",
+     "sprecher": "Topsy Küppers"
+    },
+    {
+     "rolle": "Onkel Titus",
+     "sprecher": "Andreas E. Beurmann",
+     "pseudonym": "Hans Meinhardt"
+    },
+    {
+     "rolle": "Tante Mathilda",
+     "sprecher": "Karin Lieneweg"
+    },
+    {
+     "rolle": "Professor Selby",
+     "sprecher": "Claus Wilcke"
+    },
+    {
+     "rolle": "Oberpriesterin",
+     "sprecher": "Elga Schütz"
+    },
+    {
+     "rolle": "Kevin",
+     "sprecher": "Patrick Mölleken"
+    },
+    {
+     "rolle": "Mann in Kutte",
+     "sprecher": "Rüdiger Hellmann"
+    },
+    {
+     "rolle": "Radio",
+     "sprecher": "Wilhelm Wieben"
+    },
+    {
+     "rolle": "Mr. Tilton",
+     "sprecher": "Christian Senger"
+    },
+    {
+     "rolle": "Mr. Walsh",
+     "sprecher": "Christian Rudolf"
+    },
+    {
+     "rolle": "Weise Frau",
+     "sprecher": "Dorothea Hagena"
+    },
+    {
+     "rolle": "Kelly",
+     "sprecher": "Juliane Szalay"
+    },
+    {
+     "rolle": "Patrick",
+     "sprecher": "Nicolas König"
+    },
+    {
+     "rolle": "Samuel",
+     "sprecher": "Johannes Semm"
+    },
+    {
+     "rolle": "Kenneth",
+     "sprecher": "Olaf Reichmann"
+    },
+    {
+     "rolle": "Liz Zapata",
+     "sprecher": "Merete Brettschneider"
+    },
+    {
+     "rolle": "Skinny Norris",
+     "sprecher": "Michael Harck"
+    }
+   ],
+   "links": {
+    "cover": "http://dreimetadaten.de/data/Kurzgeschichten/und-der-Zeitgeist/cover.png",
+    "cover_dreifragezeichen": "https://cdn-p.smehost.net/sites/374be6422f2b494ab9128079a4bd7dfd/materna-import/6099874_cover.jpeg",
+    "amazon": "https://www.amazon.de/gp/product/B019JL70JO"
+   },
+   "ids": {
+    "dreimetadaten": 234,
+    "appleMusic": "1149379770",
+    "spotify": "4lLOJQU6QBH5cxmERE77La",
+    "bookbeat": "534852",
+    "amazonMusic": "B01NCAJJ7H",
+    "amazon": "B019JL70JO",
+    "youTubeMusic": "MPREb_urHZhGbeUjq",
+    "deezer": "14720692"
+   },
+   "medien": [
+    {
+     "tracks": [
+      {
+       "titel": "Der verschwundene Zeitgeist – Eindeutiges Foto",
+       "start": 2794893,
+       "end": 3652267
+      }
+     ]
+    },
+    {
+     "tracks": [
+      {
+       "titel": "Zeit der Opfer, Zeit der Wunder – Objekt der Begierde",
+       "start": 4298853,
+       "end": 4569373
+      }
+     ]
+    }
+   ],
+   "teile": [
+    {
+     "teilNummer": 1,
+     "titel": "Immer und immer wieder"
+    },
+    {
+     "teilNummer": 2,
+     "titel": "Der Raub der Zehntausend"
+    },
+    {
+     "teilNummer": 3,
+     "titel": "Der verschwundene Zeitgeist"
+    },
+    {
+     "teilNummer": 4,
+     "titel": "Leaving Nineteen Sixty-four"
+    },
+    {
+     "teilNummer": 5,
+     "titel": "Rückwärtsgang"
+    },
+    {
+     "teilNummer": 6,
+     "titel": "Zeit der Opfer, Zeit der Wunder"
+    }
+   ]
+  }
+ ],
+ "die_dr3i": [
+  {
+   "titel": "Hotel Luxury End",
+   "autor": "Ivar Leon Menger",
+   "hörspielskriptautor": "Ivar Leon Menger",
+   "beschreibung": "Eine Nacht in einem Luxushotel, direkt an der malerischen Steilküste Nordkaliforniens? Normalerweise ein Grund zur Freud",
+   "veröffentlichungsdatum": "2006-11-24",
+   "gesamtdauer": 9130400,
+   "sprechrollen": [
+    {
+     "rolle": "Erzähler",
+     "sprecher": "Thomas Fritsch"
+    },
+    {
+     "rolle": "Jupiter Jones",
+     "sprecher": "Oliver Rohrbeck"
+    },
+    {
+     "rolle": "Peter Crenshaw",
+     "sprecher": "Jens Wawrczeck"
+    },
+    {
+     "rolle": "Bob Andrews",
+     "sprecher": "Andreas Fröhlich"
+    },
+    {
+     "rolle": "Tante Mathilda Jones",
+     "sprecher": "Karin Lieneweg"
+    },
+    {
+     "rolle": "Mr. Overlook",
+     "sprecher": "Joachim Kerzel"
+    },
+    {
+     "rolle": "Portier Stanley",
+     "sprecher": "Lutz Mackensy"
+    },
+    {
+     "rolle": "Liftboy Jack",
+     "sprecher": "Jan-David Rönfeldt"
+    },
+    {
+     "rolle": "Barkeeper Lloyd",
+     "sprecher": "Roman Kretschmer"
+    },
+    {
+     "rolle": "Mr. Torrance",
+     "sprecher": "Holger Löwenberg"
+    },
+    {
+     "rolle": "Mrs. Torrance",
+     "sprecher": "Katja Brügger"
+    },
+    {
+     "rolle": "Shelley Torrance",
+     "sprecher": "Saskia Weckler"
+    },
+    {
+     "rolle": "Stuart",
+     "sprecher": "Nicolas König"
+    },
+    {
+     "rolle": "Danny",
+     "sprecher": "Patrick Bach"
+    },
+    {
+     "rolle": "Police Officer",
+     "sprecher": "Jürgen Thormann"
+    },
+    {
+     "rolle": "Nachrichtensprecher",
+     "sprecher": "Bernd Klose"
+    }
+   ],
+   "links": {
+    "cover": "http://dreimetadaten.de/data/DiE_DR3i/Hotel-Luxury-End/cover.png"
+   },
+   "ids": {
+    "dreimetadaten": 128
+   },
+   "medien": [
+    {
+     "tracks": [
+      {
+       "titel": "Fragen stellen",
+       "start": 4062120,
+       "end": 4302080
+      }
+     ]
+    },
+    {
+     "tracks": [
+      {
+       "titel": "KO schlagen",
+       "start": 4638867,
+       "end": 4828320
+      }
+     ]
+    }
+   ],
+   "teile": [
+    {
+     "teilNummer": 1,
+     "titel": "Zimmer"
+    },
+    {
+     "teilNummer": 2,
+     "titel": "Restaurant"
+    }
+   ]
+  },
+  {
+   "nummer": 6,
+   "titel": "Tödliche Regie",
+   "autor": "André Minninger",
+   "hörspielskriptautor": "André Minninger",
+   "beschreibung": "Terror im Studio! Feige Anschläge machen der Synchronsprecherin Ellen Maxell das Leben zur Hölle. Wer steckt hinter der ",
+   "veröffentlichungsdatum": "2007-03-23",
+   "gesamtdauer": 3924760,
+   "sprechrollen": [
+    {
+     "rolle": "Erzähler",
+     "sprecher": "Thomas Fritsch"
+    },
+    {
+     "rolle": "Jupiter Jones",
+     "sprecher": "Oliver Rohrbeck"
+    },
+    {
+     "rolle": "Peter Crenshaw",
+     "sprecher": "Jens Wawrczeck"
+    },
+    {
+     "rolle": "Bob Andrews",
+     "sprecher": "Andreas Fröhlich"
+    },
+    {
+     "rolle": "Ellen Maxell",
+     "sprecher": "Traudel Sperber"
+    },
+    {
+     "rolle": "Audrey Moonshadow",
+     "sprecher": "Judy Winter"
+    },
+    {
+     "rolle": "Sandy Stryker",
+     "sprecher": "Martina Regenhardt"
+    },
+    {
+     "rolle": "Mandy Honeyball",
+     "sprecher": "Celine Fontanges"
+    },
+    {
+     "rolle": "Mars Chaplin",
+     "sprecher": "Rainer Schmitt"
+    },
+    {
+     "rolle": "Inspektor Milton",
+     "sprecher": "Holger Mahlich"
+    },
+    {
+     "rolle": "Assistent",
+     "sprecher": "Dirk Bach"
+    }
+   ],
+   "links": {
+    "cover": "http://dreimetadaten.de/data/DiE_DR3i/6/cover.png"
+   },
+   "ids": {
+    "dreimetadaten": 133
+   },
+   "medien": [
+    {
+     "tracks": [
+      {
+       "titel": "Endspiel",
+       "start": 2941027,
+       "end": 3924760
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "kids": [
+  {
+   "nummer": 6,
+   "titel": "Gefahr im Gruselgarten",
+   "autor": "Ulf Blanck",
+   "hörspielskriptautor": "Ulf Blanck",
+   "beschreibung": "Es ist Jahrmarkt in Rocky Beach! Die drei Fragezeichen haben Freikarten bekommen, unter anderem auch für den Gruselgarte",
+   "veröffentlichungsdatum": "2009-08-13",
+   "gesamtdauer": 4437347,
+   "sprechrollen": [
+    {
+     "rolle": "Erzähler",
+     "sprecher": "Johannes Steck"
+    },
+    {
+     "rolle": "Justus Jonas, Erster Detektiv",
+     "sprecher": "Jannik Schümann"
+    },
+    {
+     "rolle": "Peter Shaw, Zweiter Detektiv",
+     "sprecher": "Yoshij Grimm"
+    },
+    {
+     "rolle": "Bob Andrews, Recherchen und Archiv",
+     "sprecher": "David Wittmann"
+    },
+    {
+     "rolle": "Tante Mathilda",
+     "sprecher": "Ingrid Capelle"
+    },
+    {
+     "rolle": "Onkel Titus",
+     "sprecher": "Achim Schülke"
+    },
+    {
+     "rolle": "Kommissar Reynolds",
+     "sprecher": "Klaus Dittmann"
+    },
+    {
+     "rolle": "Madame Vandorra",
+     "sprecher": "Nina Hagen"
+    },
+    {
+     "rolle": "Professor",
+     "sprecher": "Monty Arnold"
+    },
+    {
+     "rolle": "Pablo",
+     "sprecher": "Jochen Piel"
+    },
+    {
+     "rolle": "Feuerschlucker",
+     "sprecher": "Erik Schäffler"
+    },
+    {
+     "rolle": "Kobold",
+     "sprecher": "Robert Missler"
+    }
+   ],
+   "links": {
+    "cover_itunes": "http://a1.mzstatic.com/r40/Music69/v4/c5/07/3e/c5073e22-d1ba-ea71-11c9-c399c900cadf/886445747614.jpg",
+    "cover_dreifragezeichen": "https://cdn-p.smehost.net/sites/374be6422f2b494ab9128079a4bd7dfd/produktwelt/hoerspiele/cover/ddfk_cd_006.jpg",
+    "amazon": "https://www.amazon.de/gp/product/B002L1FEYS"
+   },
+   "ids": {
+    "dreimetadaten": 314,
+    "appleMusic": "1092521960",
+    "spotify": "4TSPWdUo2J4w6VuwQgUK2e",
+    "bookbeat": "534840",
+    "amazonMusic": "B01CUS15GW",
+    "amazon": "B002L1FEYS",
+    "youTubeMusic": "MPREb_kQz1uNuHKMD",
+    "deezer": "12761720"
+   },
+   "medien": [
+    {
+     "tracks": [
+      {
+       "titel": "Zündende Idee",
+       "start": 3816027,
+       "end": 4437347
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "nummer": 24,
+   "titel": "Im Bann des Zauberers",
+   "autor": "Ulf Blanck",
+   "hörspielskriptautor": "Ulf Blanck",
+   "beschreibung": "Mitten auf dem Marktplatz von Rocky Beach findet eine Zaubershow statt. Einem mysteriösen Magier gelingt es dabei, das P",
+   "veröffentlichungsdatum": "2011-11-11",
+   "gesamtdauer": 3847360,
+   "sprechrollen": [
+    {
+     "rolle": "Erzähler",
+     "sprecher": "Johannes Steck"
+    },
+    {
+     "rolle": "Justus Jonas, Erster Detektiv",
+     "sprecher": "Jannik Schümann"
+    },
+    {
+     "rolle": "Peter Shaw, Zweiter Detektiv",
+     "sprecher": "Yoshij Grimm"
+    },
+    {
+     "rolle": "Bob Andrews, Recherchen und Archiv",
+     "sprecher": "David Wittmann"
+    },
+    {
+     "rolle": "Tante Mathilda",
+     "sprecher": "Ingrid Capelle"
+    },
+    {
+     "rolle": "Onkel Titus",
+     "sprecher": "Achim Schülke"
+    },
+    {
+     "rolle": "Mr. Andrews",
+     "sprecher": "Ole Jacobsen"
+    },
+    {
+     "rolle": "Mr. Doodles",
+     "sprecher": "Matthias Henkel"
+    },
+    {
+     "rolle": "Zampani",
+     "sprecher": "Christian Deutsch"
+    },
+    {
+     "rolle": "Kommissar Reynolds",
+     "sprecher": "Klaus Dittmann"
+    },
+    {
+     "rolle": "Lara",
+     "sprecher": "Jennifer Böttcher"
+    },
+    {
+     "rolle": "Leon",
+     "sprecher": "Jens Wendland"
+    },
+    {
+     "rolle": "Adam Stevens",
+     "sprecher": "Jörg Schuler"
+    },
+    {
+     "rolle": "Polizistin",
+     "sprecher": "Djuwita Müller"
+    }
+   ],
+   "links": {
+    "cover_itunes": "http://a1.mzstatic.com/r40/Music69/v4/af/fa/24/affa242a-99cb-0676-4410-5e0d74e93fbe/886445749267.jpg",
+    "cover_dreifragezeichen": "https://cdn-p.smehost.net/sites/374be6422f2b494ab9128079a4bd7dfd/produktwelt/hoerspiele/cover/ddfk_cd_024.jpg",
+    "amazon": "https://www.amazon.de/gp/product/B005GJFMQM"
+   },
+   "ids": {
+    "dreimetadaten": 332,
+    "appleMusic": "1092521032",
+    "spotify": "1GsVIL0B05ykaxM0sjjik8",
+    "bookbeat": "537489",
+    "amazonMusic": "B01CUS3SR6",
+    "amazon": "B005GJFMQM",
+    "youTubeMusic": "MPREb_XYMKkXrslQD",
+    "deezer": "13032768"
+   },
+   "medien": [
+    {
+     "tracks": [
+      {
+       "titel": "Ausgezaubert",
+       "start": 3329880,
+       "end": 3847360
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "titel": "Adventskalender: 24 Tage im Weihnachtsland",
+   "autor": "Ulf Blanck",
+   "hörspielskriptautor": "Ulf Blanck",
+   "beschreibung": "Nur noch 24 Tage! Dann ist es endlich soweit und Weihnachten steht vor der Tür. Auch Justus, Peter und Bob können es kau",
+   "veröffentlichungsdatum": "2016-11-04",
+   "links": {
+    "cover_itunes": "http://a1.mzstatic.com/r40/Music128/v4/bf/f3/74/bff374c3-f31b-81f1-178e-4f4159ccd90f/886446659749.jpg",
+    "cover_dreifragezeichen": "https://cdn-p.smehost.net/sites/374be6422f2b494ab9128079a4bd7dfd/produktwelt/hoerspiele/cover/ddfk_sp_cd_-24-tage-im-weihnachtsland.jpg",
+    "amazon": "https://www.amazon.de/gp/product/3803231159"
+   },
+   "ids": {
+    "dreimetadaten": 408,
+    "appleMusic": "1295156351",
+    "spotify": "7d8GIfIRWUNIZZXc5bjsrT",
+    "bookbeat": "534864",
+    "amazonMusic": "B076CWPSQ1",
+    "amazon": "3803231159",
+    "youTubeMusic": "MPREb_u5k0F8onyAr",
+    "deezer": "49728992"
+   },
+   "unvollständig": true,
+   "medien": []
+  },
+  {
+   "nummer": 62,
+   "titel": "Gefahr im Dschungel",
+   "autor": "Ulf Blanck",
+   "hörspielskriptautor": "Ulf Blanck",
+   "beschreibung": "Hilfe! Justus, Peter und Bob sind in einem gigantischen Dschungel-Haus gefangen! Und das nur, weil sie einem entführten ",
+   "veröffentlichungsdatum": "2018-01-19",
+   "gesamtdauer": 4277133,
+   "sprechrollen": [
+    {
+     "rolle": "Erzähler",
+     "sprecher": "Johannes Steck"
+    },
+    {
+     "rolle": "Justus Jonas, Erster Detektiv",
+     "sprecher": "Jannik Schümann"
+    },
+    {
+     "rolle": "Peter Shaw, Zweiter Detektiv",
+     "sprecher": "Yoshij Grimm"
+    },
+    {
+     "rolle": "Bob Andrews, Recherchen und Archiv",
+     "sprecher": "David Wittmann"
+    },
+    {
+     "rolle": "Giovanni",
+     "sprecher": "Roland Geiger"
+    },
+    {
+     "rolle": "Professor Hamilton",
+     "sprecher": "Hans-Georg Körbel"
+    },
+    {
+     "rolle": "Jenny Fields",
+     "sprecher": "Charlotte Puder"
+    },
+    {
+     "rolle": "Maschkow",
+     "sprecher": "Milton Welsh"
+    },
+    {
+     "rolle": "Jurij",
+     "sprecher": "Michael Baral"
+    },
+    {
+     "rolle": "Kommissar Reynolds",
+     "sprecher": "Bert Franzke"
+    }
+   ],
+   "links": {
+    "cover_itunes": "http://a1.mzstatic.com/r40/Music114/v4/36/63/fd/3663fd74-b7f3-618f-6a4f-9df22f9f8b53/886446602646.jpg",
+    "cover_dreifragezeichen": "https://cdn-p.smehost.net/sites/374be6422f2b494ab9128079a4bd7dfd/produktwelt/hoerspiele/cover/ddfk_cd_062.jpg",
+    "amazon": "https://www.amazon.de/gp/product/B0775CT31J"
+   },
+   "ids": {
+    "dreimetadaten": 370,
+    "appleMusic": "1321933872",
+    "spotify": "3KD5QNC2k1328SsuYFIjiq",
+    "bookbeat": "534890",
+    "amazonMusic": "B077Z55ZKX",
+    "amazon": "B0775CT31J",
+    "youTubeMusic": "MPREb_QauJA3chtpC",
+    "deezer": "56920482"
+   },
+   "medien": [
+    {
+     "tracks": [
+      {
+       "titel": "Matschkopf",
+       "start": 3730040,
+       "end": 4277133
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "nummer": 100,
+   "titel": "100 Stunden",
+   "autor": "Ulf Blanck",
+   "hörspielskriptautor": "Ulf Blanck",
+   "kurzbeschreibung": "Justus, Peter und Bob haben genau 100 Stunden Zeit, um die Forderungen eines Erpressers zu erfüllen.",
+   "beschreibung": "Ein aufregender Fall, der die drei Freunde schließlich sogar ins Gefängnis führt. Der Countdown läuft!",
+   "veröffentlichungsdatum": "2025-08-01",
+   "sprechrollen": [
+    {
+     "rolle": "Erzähler",
+     "sprecher": "Johannes Steck"
+    },
+    {
+     "rolle": "Justus Jonas, Erster Detektiv",
+     "sprecher": "Jannik Schümann"
+    },
+    {
+     "rolle": "Peter Shaw, Zweiter Detektiv",
+     "sprecher": "Yoshij Grimm"
+    },
+    {
+     "rolle": "Bob Andrews, Recherchen und Archiv",
+     "sprecher": "David Wittmann"
+    },
+    {
+     "rolle": "Onkel Titus",
+     "sprecher": "Achim Schülke"
+    },
+    {
+     "rolle": "Tante Mathilda",
+     "sprecher": "Ingrid Capelle"
+    },
+    {
+     "rolle": "Kommissar Reynolds",
+     "sprecher": "Bert Franzke"
+    },
+    {
+     "rolle": "Jack Dexter",
+     "sprecher": "Tom Vogt"
+    },
+    {
+     "rolle": "Bud Norris",
+     "sprecher": "Tobias Brecklinghaus"
+    },
+    {
+     "rolle": "Skinny Norris",
+     "sprecher": "Tim Kreuer"
+    },
+    {
+     "rolle": "Inspektor Taggart",
+     "sprecher": "Dietmar Wunder"
+    },
+    {
+     "rolle": "Friedhofsgärtner",
+     "sprecher": "Dirk Hardegen"
+    },
+    {
+     "rolle": "Fischer",
+     "sprecher": "Marko Bräutigam"
+    },
+    {
+     "rolle": "Porter",
+     "sprecher": "Tommi Piper"
+    },
+    {
+     "rolle": "Postbotin",
+     "sprecher": "Nina Reithmeier"
+    },
+    {
+     "rolle": "Giovanni",
+     "sprecher": "Roland Geiger"
+    },
+    {
+     "rolle": "Buchhändlerin",
+     "sprecher": "Sabine Lorenz"
+    },
+    {
+     "rolle": "Gordon Flanders",
+     "sprecher": "Detlef Tams"
+    },
+    {
+     "rolle": "Bürgermeister Plimsfield",
+     "sprecher": "Mario Hassert"
+    },
+    {
+     "rolle": "Vollzugsbeamter",
+     "sprecher": "Santiago Ziesmer"
+    }
+   ],
+   "links": {
+    "cover_itunes": "http://a1.mzstatic.com/r40/Music211/v4/2a/ad/d6/2aadd697-5b87-8c85-8575-9ae2c65d65d6/196872295238.jpg",
+    "cover_dreifragezeichen": "https://cdn-p.smehost.net/sites/374be6422f2b494ab9128079a4bd7dfd/produktwelt/hoerspiele/cover/ddfk-100.jpg",
+    "amazon": "https://www.amazon.de/gp/product/3803260833"
+   },
+   "ids": {
+    "dreimetadaten": 426,
+    "appleMusic": "1824627006",
+    "spotify": "2HPtwODz0Pe0MQtAAdJVd8",
+    "bookbeat": "1686970",
+    "amazonMusic": "B0FGPXM5Q9",
+    "amazon": "3803260833",
+    "youTubeMusic": "MPREb_lLDbu2B6sNK",
+    "deezer": "782826401"
+   },
+   "unvollständig": true,
+   "medien": []
+  }
+ ],
+ "sonstige": [
+  {
+   "titel": "Rocky Beach Radio Show",
+   "beschreibung": "Was hat es mit der alten Holzkiste auf sich, die Justus auf dem Schrottplatz findet? Welche Rolle spielt das alte Rundfu",
+   "veröffentlichungsdatum": "1999-08-23",
+   "links": {
+    "cover_itunes": "http://a1.mzstatic.com/r40/Music128/v4/e6/11/26/e611263b-b551-493f-b005-87afbbe70a1e/743216946327.jpg",
+    "amazon": "https://www.amazon.de/gp/product/B00002DF5U"
+   },
+   "ids": {
+    "dreimetadaten": 414,
+    "appleMusic": "283573096",
+    "spotify": "6GzVkk2Z68W4nhu4W9is7e",
+    "amazonMusic": "B0029Y3WYQ",
+    "amazon": "B00002DF5U"
+   },
+   "unvollständig": true,
+   "medien": []
+  },
+  {
+   "titel": "Die Welt der drei ???",
+   "beschreibung": "Wusstet ihr, dass Skinny Norris und Morton etwas gemeinsam haben? Dass Bobs Vater ganze vier und seine Mutter gar keinen",
+   "veröffentlichungsdatum": "2019-08-23",
+   "links": {
+    "cover_itunes": "http://a1.mzstatic.com/r40/Music113/v4/0b/86/f3/0b86f33c-7355-64e6-a18f-4a030e6f8213/886447834695.jpg",
+    "cover_dreifragezeichen": "https://cdn-p.smehost.net/sites/374be6422f2b494ab9128079a4bd7dfd/news/2019/ddf-rodenwald-news.png",
+    "amazon": "https://www.amazon.de/gp/product/B07VZ3QHDC"
+   },
+   "ids": {
+    "dreimetadaten": 415,
+    "appleMusic": "1473823449",
+    "spotify": "7M0B7obT3Yne87GsGAvB4r",
+    "bookbeat": "534556",
+    "amazonMusic": "B07VHQX6BV",
+    "amazon": "B07VZ3QHDC",
+    "youTubeMusic": "MPREb_sL7uwWhB7Y3",
+    "deezer": "105012832"
+   },
+   "unvollständig": true,
+   "medien": []
+  }
+ ]
+}
