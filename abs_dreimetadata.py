@@ -34,6 +34,17 @@ API_KEY = os.environ.get("API_KEY", "")
 MAX_RESULTS = 10
 MIN_SCORE = 100
 
+# Cover-Varianten: Name für COVER_PRIORITY → Feld in den Links von dreimetadaten.de
+COVER_SOURCES = {
+    "dreimetadaten": "cover",                     # 2048px PNG ohne EUROPA-Logo (nicht bei Kids)
+    "artwork": "artwork",                         # nur die Illustration ohne Schrift (nicht bei Kids)
+    "apple": "cover_itunes",                      # offizielles Cover mit Logo von Apple Music
+    "dreifragezeichen": "cover_dreifragezeichen", # offizielles Cover mit Logo von dreifragezeichen.de
+    "kosmos": "cover_kosmos",                     # Cover von Kosmos über web.archive.org (nur Hauptserie)
+}
+# Standard-Reihenfolge, gleichzeitig Ausweichlösung, wenn die gewünschte Variante fehlt
+DEFAULT_COVER_PRIORITY = ["dreimetadaten", "apple", "dreifragezeichen", "kosmos"]
+
 # Kategorie-Schlüssel aus der JSON → Serienname in Audiobookshelf
 SERIES_NAMES = {
     "serie": "Die drei ???",
@@ -282,11 +293,32 @@ def absolute_url(path: str) -> str:
     return "https://dreimetadaten.de/" + path.lstrip("/")
 
 
+def parse_cover_priority(value: str) -> List[str]:
+    """Liest die gewünschte Cover-Reihenfolge, z.B. "apple,dreimetadaten"
+
+    Nicht genannte Varianten werden als Ausweichlösung angehängt, damit es immer ein Cover gibt.
+    """
+    priority = []
+    for name in (n.strip().lower() for n in value.split(",")):
+        if not name:
+            continue
+        if name not in COVER_SOURCES:
+            logger.warning(f"Unbekannte Cover-Variante '{name}' in COVER_PRIORITY ignoriert "
+                           f"(möglich: {', '.join(COVER_SOURCES)})")
+        elif name not in priority:
+            priority.append(name)
+    return priority + [n for n in DEFAULT_COVER_PRIORITY if n not in priority]
+
+
+COVER_PRIORITY = parse_cover_priority(os.environ.get("COVER_PRIORITY", ""))
+
+
 def extract_cover_url(links: Dict[str, Any]) -> str:
-    """Cover-URL: eigenes Cover von dreimetadaten.de bevorzugt, sonst Alternativen"""
+    """Cover-URL in der Reihenfolge von COVER_PRIORITY, sonst Alternativen"""
     if not isinstance(links, dict):
         return ""
-    for key in ("cover", "cover_itunes", "cover_kosmos"):
+    for name in COVER_PRIORITY:
+        key = COVER_SOURCES[name]
         if isinstance(links.get(key), str) and links[key]:
             return absolute_url(links[key])
     cover2 = links.get("cover2")
@@ -411,6 +443,7 @@ def health_check():
 if __name__ == '__main__':
     host = os.environ.get("HOST", "0.0.0.0")
     port = int(os.environ.get("PORT", "5000"))
+    logger.info(f"Cover-Reihenfolge: {', '.join(COVER_PRIORITY)}")
     store.get()  # Daten beim Start laden
     try:
         from waitress import serve

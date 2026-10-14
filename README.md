@@ -46,8 +46,27 @@ Der Provider läuft dann auf `http://localhost:5000` (mit dem Produktions-Server
 | `API_KEY` | – | Wenn gesetzt, muss Audiobookshelf diesen Wert als Authorization Header mitschicken |
 | `CACHE_TTL` | `3600` | Sekunden, bis auf neue Daten geprüft wird |
 | `LOG_LEVEL` | `INFO` | `DEBUG` zeigt zusätzlich die Bewertung der besten Treffer |
+| `COVER_PRIORITY` | `dreimetadaten,apple,dreifragezeichen,kosmos` | Welche Cover-Variante bevorzugt wird (siehe unten) |
 
 Beispiel: `API_KEY=geheim PORT=5050 python abs_dreimetadata.py`
+
+### Cover-Varianten
+
+dreimetadaten.de verlinkt pro Folge mehrere Cover. Mit `COVER_PRIORITY` legst du fest, welche bevorzugt wird – als kommagetrennte Liste in der gewünschten Reihenfolge:
+
+| Name | Beschreibung | Verfügbar für |
+|---|---|---|
+| `dreimetadaten` | Hochauflösendes Cover von dreimetadaten.de (2048×2048 PNG), ohne EUROPA-Logo | alle außer Kids |
+| `artwork` | Nur die Illustration, ohne Schriftzug (1400×1400 WebP) | alle außer Kids |
+| `apple` | Offizielles Cover mit EUROPA-Logo von Apple Music (ca. 1400×1400 JPG) | fast alle, auch Kids |
+| `dreifragezeichen` | Offizielles Cover mit EUROPA-Logo von dreifragezeichen.de (ca. 1400×1400 JPG) | fast alle, auch Kids |
+| `kosmos` | Cover vom Kosmos-Verlag über web.archive.org (ca. 1000×1000 JPG, langsamer) | nur Hauptserie |
+
+Ist die gewünschte Variante für eine Folge nicht vorhanden, wird automatisch die nächste genommen (in der Standard-Reihenfolge), es gibt also immer ein Cover.
+
+Beispiele:
+- `COVER_PRIORITY=apple` – überall das offizielle Cover mit Logo
+- `COVER_PRIORITY=artwork` – nur Illustrationen; Kids-Folgen bekommen das Apple-Cover
 
 ## Docker
 
@@ -68,6 +87,8 @@ services:
       - TZ=Europe/Berlin
       # Optional: Schlüssel, den Audiobookshelf als "Authorization Header Value" mitschicken muss
       # - API_KEY=geheim
+      # Optional: bevorzugte Cover-Variante (dreimetadaten, artwork, apple, dreifragezeichen, kosmos)
+      # - COVER_PRIORITY=apple
     restart: unless-stopped
 ```
 

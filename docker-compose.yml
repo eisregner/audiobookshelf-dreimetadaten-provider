@@ -8,4 +8,6 @@ services:
       - TZ=Europe/Berlin
       # Optional: Schlüssel, den Audiobookshelf als "Authorization Header Value" mitschicken muss
       # - API_KEY=geheim
+      # Optional: bevorzugte Cover-Variante (dreimetadaten, artwork, apple, dreifragezeichen, kosmos)
+      # - COVER_PRIORITY=apple
     restart: unless-stopped

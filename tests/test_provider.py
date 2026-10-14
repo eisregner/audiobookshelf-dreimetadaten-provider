@@ -184,6 +184,44 @@ def test_cover_fallbacks(links, expected):
     assert provider.extract_cover_url(links) == expected
 
 
+ALL_COVERS = {
+    "cover": "http://dreimetadaten.de/data/Serie/001/cover.png",
+    "artwork": "http://dreimetadaten.de/data/Serie/001/artwork.webp",
+    "cover_itunes": "http://a1.mzstatic.com/source",
+    "cover_dreifragezeichen": "https://cdn-p.smehost.net/ddf_cd_001.jpg",
+    "cover_kosmos": "http://web.archive.org/kosmos.jpg",
+}
+
+
+@pytest.mark.parametrize("setting, expected", [
+    ("", "https://dreimetadaten.de/data/Serie/001/cover.png"),
+    ("apple", "https://a1.mzstatic.com/source"),
+    ("dreifragezeichen", "https://cdn-p.smehost.net/ddf_cd_001.jpg"),
+    ("artwork", "https://dreimetadaten.de/data/Serie/001/artwork.webp"),
+    (" Kosmos , apple ", "https://web.archive.org/kosmos.jpg"),
+    ("unbekannt,apple", "https://a1.mzstatic.com/source"),
+])
+def test_cover_priority(monkeypatch, setting, expected):
+    monkeypatch.setattr(provider, "COVER_PRIORITY", provider.parse_cover_priority(setting))
+    assert provider.extract_cover_url(ALL_COVERS) == expected
+
+
+def test_cover_priority_falls_back_when_variant_missing(monkeypatch):
+    # Kids-Folgen haben kein eigenes Cover von dreimetadaten.de
+    monkeypatch.setattr(provider, "COVER_PRIORITY", provider.parse_cover_priority("artwork,dreimetadaten"))
+    kids_links = {k: v for k, v in ALL_COVERS.items() if k in ("cover_itunes", "cover_dreifragezeichen")}
+    assert provider.extract_cover_url(kids_links) == "https://a1.mzstatic.com/source"
+
+
+def test_parse_cover_priority():
+    assert provider.parse_cover_priority("") == ["dreimetadaten", "apple", "dreifragezeichen", "kosmos"]
+    assert provider.parse_cover_priority("apple,APPLE,foo") == ["apple", "dreimetadaten", "dreifragezeichen", "kosmos"]
+
+
+def test_kids_cover_uses_apple_by_default(client):
+    assert "mzstatic.com" in abs_entry(client, "Gefahr im Gruselgarten")["cover"]
+
+
 def test_matches_follow_abs_spec(client):
     allowed = {"title", "subtitle", "author", "narrator", "publisher", "publishedYear", "description", "cover",
                "isbn", "asin", "genres", "tags", "series", "language", "duration"}
