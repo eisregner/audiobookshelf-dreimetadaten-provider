@@ -117,6 +117,10 @@ python -m pytest
 - `GET /name` - Provider Name
 - `GET /version` - Version
 
+## Ähnliche Projekte
+
+- [**abs-agg**](https://github.com/Vito0912/abs-agg) von [Vito0912](https://github.com/Vito0912): Ein Metadaten-Provider, der viele Quellen in einem Server bündelt (u.a. Die drei ???, BookBeat, Storytel, ARD Audiothek, Goodreads) und als Docker-Image bereitsteht. Gut geeignet, wenn neben *Die drei ???* noch andere Hörbücher und Hörspiele abgeglichen werden sollen. Dieses Projekt ist dagegen ganz auf *Die drei ???* spezialisiert.
+
 ## Credits
 
 - Metadaten von [dreimetadaten.de](https://dreimetadaten.de) by [YourMJK](https://github.com/YourMJK)
