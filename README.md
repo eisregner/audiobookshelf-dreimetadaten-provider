@@ -49,6 +49,68 @@ Der Provider läuft dann auf `http://localhost:5000` (mit dem Produktions-Server
 
 Beispiel: `API_KEY=geheim PORT=5050 python abs_dreimetadata.py`
 
+## Docker
+
+Der Provider kann auch als Docker-Container laufen. Das Image wird dabei direkt aus diesem Repository gebaut.
+
+### Docker Compose (empfohlen)
+
+Ohne das Repository zu klonen – einfach diese `docker-compose.yml` anlegen:
+
+```yaml
+services:
+  dreimetadaten-provider:
+    build: https://github.com/eisregner/audiobookshelf-dreimetadaten-provider.git#main
+    container_name: dreimetadaten-provider
+    ports:
+      - "5000:5000"
+    environment:
+      - TZ=Europe/Berlin
+      # Optional: Schlüssel, den Audiobookshelf als "Authorization Header Value" mitschicken muss
+      # - API_KEY=geheim
+    restart: unless-stopped
+```
+
+```bash
+docker compose up -d
+```
+
+Updates einspielen: `docker compose build --pull && docker compose up -d`
+
+Alternativ das Repository klonen und die mitgelieferte `docker-compose.yml` verwenden:
+
+```bash
+git clone https://github.com/eisregner/audiobookshelf-dreimetadaten-provider.git
+cd audiobookshelf-dreimetadaten-provider
+docker compose up -d
+```
+
+### Docker ohne Compose
+
+```bash
+docker build -t dreimetadaten-provider https://github.com/eisregner/audiobookshelf-dreimetadaten-provider.git#main
+docker run -d --name dreimetadaten-provider -p 5000:5000 --restart unless-stopped dreimetadaten-provider
+```
+
+### Zusammen mit Audiobookshelf in einer Compose-Datei
+
+Laufen beide Container in derselben `docker-compose.yml`, erreicht Audiobookshelf den Provider über den Service-Namen. Der Port muss dann nicht nach außen freigegeben werden:
+
+```yaml
+services:
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    # ... deine bestehende Konfiguration
+
+  dreimetadaten-provider:
+    build: https://github.com/eisregner/audiobookshelf-dreimetadaten-provider.git#main
+    restart: unless-stopped
+```
+
+In Audiobookshelf dann als URL `http://dreimetadaten-provider:5000` eintragen.
+
+Der Container läuft als unprivilegierter Benutzer und hat einen eingebauten Health Check (`docker ps` zeigt `healthy`).
+
 ## Konfiguration in Audiobookshelf
 ![Config](Images/Config.png "Config")
 1. Gehe zu **Einstellungen → Metadaten → Benutzerdefinierte Metadatenanbieter → Hinzufügen**
