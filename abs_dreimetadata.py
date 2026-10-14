@@ -17,13 +17,10 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
-VERSION = "1.2.0"
+VERSION = "1.2.1"
 
-# Komplette Metadaten aller Kategorien von dreimetadaten.de
-METADATA_URL = os.environ.get(
-    "METADATA_URL",
-    "https://raw.githubusercontent.com/YourMJK/dreimetadaten/master/metadata/json/Alle.json",
-)
+# Komplette Metadaten aller Kategorien von dreimetadaten.de (statische Web-API mit garantiert stabiler URL)
+METADATA_URL = os.environ.get("METADATA_URL", "https://dreimetadaten.de/data/Alle.json")
 # Wie lange die Daten gültig sind, bevor auf Änderungen geprüft wird (Sekunden)
 CACHE_TTL = int(os.environ.get("CACHE_TTL", "3600"))
 # Nach einem fehlgeschlagenen Abruf erst nach dieser Zeit erneut versuchen (Sekunden)
@@ -252,12 +249,11 @@ def duration_minutes(episode: Dict[str, Any]) -> Optional[int]:
     """Gesamtlaufzeit in Minuten (so erwartet es Audiobookshelf)"""
     total_ms = episode.get("gesamtdauer")
     if not total_ms:
-        # Fallback: Ende des letzten Tracks jedes Mediums aufsummieren
-        total_ms = 0
-        for medium in episode.get("medien") or []:
-            tracks = medium.get("tracks") if isinstance(medium, dict) else None
-            if tracks and isinstance(tracks[-1], dict):
-                total_ms += tracks[-1].get("end", 0)
+        # Fallback aus den Kapiteln (ohne Bonus- und Dummy-Tracks wie bei den Medien),
+        # bei mehrteiligen Hörspielen über alle Teile summiert
+        parts = episode.get("teile") or [episode]
+        ends = [p["kapitel"][-1].get("end") for p in parts if isinstance(p, dict) and p.get("kapitel")]
+        total_ms = sum(ends) if len(ends) == len(parts) and all(ends) else None
     if not total_ms:
         return None
     return round(total_ms / 60000)
@@ -353,7 +349,8 @@ def transform_to_abs_format(entry: Dict[str, Any]) -> Dict[str, Any]:
         "narrator": extract_narrators(episode.get("sprechrollen", [])),
         "publisher": "EUROPA",
         "publishedYear": year,
-        "description": episode.get("beschreibung") or episode.get("kurzbeschreibung") or episode.get("gesamtbeschreibung") or "",
+        # gesamtbeschreibung = kurzbeschreibung + beschreibung, mit Fallback auf metabeschreibung
+        "description": episode.get("gesamtbeschreibung") or episode.get("beschreibung") or "",
         "cover": extract_cover_url(episode.get("links", {})),
         "genres": ["Detektive & Spannung", "Kinder-Hörbücher"],  # Passend zu Audible
         "tags": tags,

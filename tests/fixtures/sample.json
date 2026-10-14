@@ -9,9 +9,17 @@
    "titel": "und der Super-Papagei",
    "autor": "Robert Arthur",
    "hörspielskriptautor": "H. G. Francis",
+   "gesamtbeschreibung": "Der Auftrag an die drei Detektive hört sich recht harmlos an: Sie sollen einen entflogenen Papagei suchen. Doch kaum beg",
    "beschreibung": "Der Auftrag an die drei Detektive hört sich recht harmlos an: Sie sollen einen entflogenen Papagei suchen. Doch kaum beg",
    "veröffentlichungsdatum": "1979-10-12",
    "gesamtdauer": 3144160,
+   "kapitel": [
+    {
+     "titel": "Blackbeard hat das letzte Wort",
+     "start": 2761453,
+     "end": 3144160
+    }
+   ],
    "sprechrollen": [
     {
      "rolle": "Hitchcock, Erzähler",
@@ -98,9 +106,17 @@
    "titel": "und der sprechende Totenkopf",
    "autor": "Robert Arthur",
    "hörspielskriptautor": "H. G. Francis",
+   "gesamtbeschreibung": "Peter und Bob halten von Anfang an nicht viel davon, dass ihr Freund Justus auf einer Versteigerung ausgerechnet einen u",
    "beschreibung": "Peter und Bob halten von Anfang an nicht viel davon, dass ihr Freund Justus auf einer Versteigerung ausgerechnet einen u",
    "veröffentlichungsdatum": "1979-10-17",
    "gesamtdauer": 2752640,
+   "kapitel": [
+    {
+     "titel": "Wo ist das Geld?",
+     "start": 2423800,
+     "end": 2752640
+    }
+   ],
    "sprechrollen": [
     {
      "rolle": "Hitchcock, Erzähler",
@@ -199,9 +215,17 @@
    "titel": "und der lachende Schatten",
    "autor": "William Arden",
    "hörspielskriptautor": "H. G. Francis",
+   "gesamtbeschreibung": "Schatten pflegen normalerweise zu schweigen.\nHier aber lacht ein Schatten – schrill und furchterregend! Doch nicht nur d",
    "beschreibung": "Schatten pflegen normalerweise zu schweigen.\nHier aber lacht ein Schatten – schrill und furchterregend! Doch nicht nur d",
    "veröffentlichungsdatum": "1980-03-31",
    "gesamtdauer": 2640320,
+   "kapitel": [
+    {
+     "titel": "Der Schatz der Chumash",
+     "start": 2346280,
+     "end": 2640320
+    }
+   ],
    "sprechrollen": [
     {
      "rolle": "Hitchcock, Erzähler",
@@ -299,9 +323,17 @@
    "titel": "und der Super-Wal",
    "autor": "Marc Brandel",
    "hörspielskriptautor": "H. G. Francis",
+   "gesamtbeschreibung": "Ein gestrandeter Wal ist im privaten Schwimmbecken eines gewissen Mr. Slater untergebracht und wird dort von Constance a",
    "beschreibung": "Ein gestrandeter Wal ist im privaten Schwimmbecken eines gewissen Mr. Slater untergebracht und wird dort von Constance a",
    "veröffentlichungsdatum": "1985-05-29",
    "gesamtdauer": 2896187,
+   "kapitel": [
+    {
+     "titel": "Was in der Kassette war",
+     "start": 2524133,
+     "end": 2896187
+    }
+   ],
    "sprechrollen": [
     {
      "rolle": "Hitchcock, Erzähler",
@@ -378,6 +410,7 @@
    "titel": "Toteninsel",
    "autor": "André Marx",
    "hörspielskriptautor": "André Minninger",
+   "gesamtbeschreibung": "Die drei ??? übernehmen ihren 100sten Fall! In drei spannenden Folgen sind sie dem Geheimnis der Toteninsel auf der Spur",
    "beschreibung": "Die drei ??? übernehmen ihren 100sten Fall! In drei spannenden Folgen sind sie dem Geheimnis der Toteninsel auf der Spur",
    "veröffentlichungsdatum": "2001-10-15",
    "gesamtdauer": 9991866,
@@ -492,15 +525,36 @@
    "teile": [
     {
      "teilNummer": 1,
-     "titel": "Das Rätsel der Sphinx"
+     "titel": "Das Rätsel der Sphinx",
+     "kapitel": [
+      {
+       "titel": "Das Geisterschiff",
+       "start": 2660453,
+       "end": 3204573
+      }
+     ]
     },
     {
      "teilNummer": 2,
-     "titel": "Das vergessene Volk"
+     "titel": "Das vergessene Volk",
+     "kapitel": [
+      {
+       "titel": "Nacht in Angst",
+       "start": 2922893,
+       "end": 3376800
+      }
+     ]
     },
     {
      "teilNummer": 3,
-     "titel": "Der Fluch der Gräber"
+     "titel": "Der Fluch der Gräber",
+     "kapitel": [
+      {
+       "titel": "Tödliche Spur",
+       "start": 2721600,
+       "end": 3410493
+      }
+     ]
     }
    ]
   }
@@ -510,9 +564,17 @@
    "titel": "Master of Chess (Live & Unplugged)",
    "autor": "Stefanie Burkart",
    "hörspielskriptautor": "Andreas Fröhlich",
+   "gesamtbeschreibung": "Eine Autopanne im strömenden Regen zwingt die drei ??? – Justus, Peter und Bob – dazu, Zuflucht auf Schloss Blackstone z",
    "beschreibung": "Eine Autopanne im strömenden Regen zwingt die drei ??? – Justus, Peter und Bob – dazu, Zuflucht auf Schloss Blackstone z",
    "veröffentlichungsdatum": "2002-11-11",
    "gesamtdauer": 6320493,
+   "kapitel": [
+    {
+     "titel": "Aus einem tiefen Schlaf erwacht",
+     "start": 5696786,
+     "end": 6320493
+    }
+   ],
    "sprechrollen": [
     {
      "rolle": "Erzähler",
@@ -595,9 +657,17 @@
    "titel": "und der Super-Papagei 2004",
    "autor": "Robert Arthur",
    "hörspielskriptautor": "André Minninger",
+   "gesamtbeschreibung": "Das ist wirklich ein spezial gelagerter Sonderfall: Warum zitieren Papageien sonderbare Sprüche falsch? Was hat Sherlock",
    "beschreibung": "Das ist wirklich ein spezial gelagerter Sonderfall: Warum zitieren Papageien sonderbare Sprüche falsch? Was hat Sherlock",
    "veröffentlichungsdatum": "2004-10-04",
    "gesamtdauer": 5400067,
+   "kapitel": [
+    {
+     "titel": "Wo sind die Papageien?",
+     "start": 5227840,
+     "end": 5400067
+    }
+   ],
    "sprechrollen": [
     {
      "rolle": "Erzähler",
@@ -702,6 +772,7 @@
    "titel": "und der dreiTag",
    "autor": "Hendrik Buchna, Tim Wenderoth, Ivar Leon Menger",
    "hörspielskriptautor": "André Minninger",
+   "gesamtbeschreibung": "Kann ein und derselbe Tag dreimal völlig unterschiedlich verlaufen? Kann ein unscheinbares Detail wie ein Colaglas darüb",
    "beschreibung": "Kann ein und derselbe Tag dreimal völlig unterschiedlich verlaufen? Kann ein unscheinbares Detail wie ein Colaglas darüb",
    "veröffentlichungsdatum": "2010-10-01",
    "gesamtdauer": 13078093,
@@ -936,15 +1007,36 @@
    "teile": [
     {
      "teilNummer": 1,
-     "titel": "Sicht J: Der Fluch der Sheldon Street"
+     "titel": "Sicht J: Der Fluch der Sheldon Street",
+     "kapitel": [
+      {
+       "titel": "Triumph",
+       "start": 4589640,
+       "end": 4757160
+      }
+     ]
     },
     {
      "teilNummer": 2,
-     "titel": "Sicht B: Im Zeichen der Ritter"
+     "titel": "Sicht B: Im Zeichen der Ritter",
+     "kapitel": [
+      {
+       "titel": "Rote Farbe",
+       "start": 3353253,
+       "end": 3904933
+      }
+     ]
     },
     {
      "teilNummer": 3,
-     "titel": "Sicht P: Fremder Freund"
+     "titel": "Sicht P: Fremder Freund",
+     "kapitel": [
+      {
+       "titel": "Darf ich reinkommen?",
+       "start": 3978200,
+       "end": 4416000
+      }
+     ]
     }
    ]
   }
@@ -954,6 +1046,7 @@
    "titel": "und die Geisterlampe",
    "autor": "Kari Erlhoff, Marco Sonnleitner, Hendrik Buchna",
    "hörspielskriptautor": "André Minninger",
+   "gesamtbeschreibung": "Das gab es noch nie:\n12 Mini-Fälle der drei ???.\nDie drei Autoren Kari Erlhoff, Hendrik Buchna und Marco Sonnleitner erz",
    "beschreibung": "Das gab es noch nie:\n12 Mini-Fälle der drei ???.\nDie drei Autoren Kari Erlhoff, Hendrik Buchna und Marco Sonnleitner erz",
    "veröffentlichungsdatum": "2012-09-28",
    "gesamtdauer": 10299360,
@@ -1139,51 +1232,135 @@
    "teile": [
     {
      "teilNummer": 1,
-     "titel": "und die Geisterlampe"
+     "titel": "und die Geisterlampe",
+     "kapitel": [
+      {
+       "titel": "und die Geisterlampe",
+       "start": 0,
+       "end": 1109933
+      }
+     ]
     },
     {
      "teilNummer": 2,
-     "titel": "Dunkle Vergangenheit"
+     "titel": "Dunkle Vergangenheit",
+     "kapitel": [
+      {
+       "titel": "Dunkle Vergangenheit",
+       "start": 0,
+       "end": 687480
+      }
+     ]
     },
     {
      "teilNummer": 3,
-     "titel": "Entführt"
+     "titel": "Entführt",
+     "kapitel": [
+      {
+       "titel": "Entführt",
+       "start": 0,
+       "end": 852774
+      }
+     ]
     },
     {
      "teilNummer": 4,
-     "titel": "Verschwörung auf der Eagle Ranch"
+     "titel": "Verschwörung auf der Eagle Ranch",
+     "kapitel": [
+      {
+       "titel": "Verschwörung auf der Eagle Ranch",
+       "start": 0,
+       "end": 1367653
+      }
+     ]
     },
     {
      "teilNummer": 5,
-     "titel": "SOS"
+     "titel": "SOS",
+     "kapitel": [
+      {
+       "titel": "SOS",
+       "start": 0,
+       "end": 661640
+      }
+     ]
     },
     {
      "teilNummer": 6,
-     "titel": "Der graue Dämon"
+     "titel": "Der graue Dämon",
+     "kapitel": [
+      {
+       "titel": "Der graue Dämon",
+       "start": 0,
+       "end": 556307
+      }
+     ]
     },
     {
      "teilNummer": 7,
-     "titel": "Das Lehrstück"
+     "titel": "Das Lehrstück",
+     "kapitel": [
+      {
+       "titel": "Das Lehrstück",
+       "start": 0,
+       "end": 749413
+      }
+     ]
     },
     {
      "teilNummer": 8,
-     "titel": "Das Rätsel der schwarzen Nadel"
+     "titel": "Das Rätsel der schwarzen Nadel",
+     "kapitel": [
+      {
+       "titel": "Das Rätsel der schwarzen Nadel",
+       "start": 0,
+       "end": 711680
+      }
+     ]
     },
     {
      "teilNummer": 9,
-     "titel": "Der verschwundene Superstar"
+     "titel": "Der verschwundene Superstar",
+     "kapitel": [
+      {
+       "titel": "Der verschwundene Superstar",
+       "start": 0,
+       "end": 1055280
+      }
+     ]
     },
     {
      "teilNummer": 10,
-     "titel": "Manches verlernt man nie"
+     "titel": "Manches verlernt man nie",
+     "kapitel": [
+      {
+       "titel": "Manches verlernt man nie",
+       "start": 0,
+       "end": 955600
+      }
+     ]
     },
     {
      "teilNummer": 11,
-     "titel": "Psychomoon"
+     "titel": "Psychomoon",
+     "kapitel": [
+      {
+       "titel": "Psychomoon",
+       "start": 0,
+       "end": 670160
+      }
+     ]
     },
     {
      "teilNummer": 12,
-     "titel": "Jagd auf den Weihnachtsmann"
+     "titel": "Jagd auf den Weihnachtsmann",
+     "kapitel": [
+      {
+       "titel": "Jagd auf den Weihnachtsmann",
+       "start": 0,
+       "end": 921440
+      }
+     ]
     }
    ]
   },
@@ -1191,6 +1368,7 @@
    "titel": "Das Rätsel der Sieben",
    "autor": "André Minninger, Kari Erlhoff, Hendrik Buchna, Marco Sonnleitner, Ben Nevis, Christoph Dittert, André Marx",
    "hörspielskriptautor": "André Minninger",
+   "gesamtbeschreibung": "Sieben Kurzgeschichten von sieben Autoren in einer Hörspiel-Box: Bei diesen Fällen wird so rasant ermittelt, dass die Lö",
    "beschreibung": "Sieben Kurzgeschichten von sieben Autoren in einer Hörspiel-Box: Bei diesen Fällen wird so rasant ermittelt, dass die Lö",
    "veröffentlichungsdatum": "2014-02-21",
    "gesamtdauer": 9720654,
@@ -1370,31 +1548,80 @@
    "teile": [
     {
      "teilNummer": 1,
-     "titel": "Der siebte Gast"
+     "titel": "Der siebte Gast",
+     "kapitel": [
+      {
+       "titel": "Prinzessin in Champagnerlaune",
+       "start": 774387,
+       "end": 1596747
+      }
+     ]
     },
     {
      "teilNummer": 2,
-     "titel": "Bis um sieben zurück"
+     "titel": "Bis um sieben zurück",
+     "kapitel": [
+      {
+       "titel": "Bobby",
+       "start": 1199813,
+       "end": 1477173
+      }
+     ]
     },
     {
      "teilNummer": 3,
-     "titel": "Bobs schwerste Stunde"
+     "titel": "Bobs schwerste Stunde",
+     "kapitel": [
+      {
+       "titel": "Aufwendiges Vorhaben",
+       "start": 973600,
+       "end": 1574187
+      }
+     ]
     },
     {
      "teilNummer": 4,
-     "titel": "Die rote Sieben"
+     "titel": "Die rote Sieben",
+     "kapitel": [
+      {
+       "titel": "Abgekartetes Spiel",
+       "start": 729440,
+       "end": 1174080
+      }
+     ]
     },
     {
      "teilNummer": 5,
-     "titel": "Schutzgeld"
+     "titel": "Schutzgeld",
+     "kapitel": [
+      {
+       "titel": "Sieben harte Stunden",
+       "start": 941400,
+       "end": 1389800
+      }
+     ]
     },
     {
      "teilNummer": 6,
-     "titel": "Die siebte Frau des Leuchters"
+     "titel": "Die siebte Frau des Leuchters",
+     "kapitel": [
+      {
+       "titel": "Freier Wille",
+       "start": 629667,
+       "end": 1409027
+      }
+     ]
     },
     {
      "teilNummer": 7,
-     "titel": "Die verschwundene Torte"
+     "titel": "Die verschwundene Torte",
+     "kapitel": [
+      {
+       "titel": "Des Rätsels Lösung",
+       "start": 528413,
+       "end": 1099640
+      }
+     ]
     }
    ]
   },
@@ -1402,6 +1629,7 @@
    "titel": "und der Zeitgeist",
    "autor": "Hendrik Buchna, Marco Sonnleitner, André Minninger, Ben Nevis, André Marx, Christoph Dittert, Kari Erlhoff",
    "hörspielskriptautor": "André Minninger",
+   "gesamtbeschreibung": "Die drei ??? übernehmen jeden Fall. Da gibt's immer Überraschungen, ungeahnte Wendungen – und manchmal kommt alles wirkl",
    "beschreibung": "Die drei ??? übernehmen jeden Fall. Da gibt's immer Überraschungen, ungeahnte Wendungen – und manchmal kommt alles wirkl",
    "veröffentlichungsdatum": "2016-03-04",
    "gesamtdauer": 8221640,
@@ -1570,27 +1798,69 @@
    "teile": [
     {
      "teilNummer": 1,
-     "titel": "Immer und immer wieder"
+     "titel": "Immer und immer wieder",
+     "kapitel": [
+      {
+       "titel": "Elf",
+       "start": 590280,
+       "end": 950800
+      }
+     ]
     },
     {
      "teilNummer": 2,
-     "titel": "Der Raub der Zehntausend"
+     "titel": "Der Raub der Zehntausend",
+     "kapitel": [
+      {
+       "titel": "Ablenkungsmanöver",
+       "start": 823293,
+       "end": 1198507
+      }
+     ]
     },
     {
      "teilNummer": 3,
-     "titel": "Der verschwundene Zeitgeist"
+     "titel": "Der verschwundene Zeitgeist",
+     "kapitel": [
+      {
+       "titel": "Eindeutiges Foto",
+       "start": 645586,
+       "end": 1502960
+      }
+     ]
     },
     {
      "teilNummer": 4,
-     "titel": "Leaving Nineteen Sixty-four"
+     "titel": "Leaving Nineteen Sixty-four",
+     "kapitel": [
+      {
+       "titel": "Ein Ass im Ärmel",
+       "start": 991520,
+       "end": 1748867
+      }
+     ]
     },
     {
      "teilNummer": 5,
-     "titel": "Rückwärtsgang"
+     "titel": "Rückwärtsgang",
+     "kapitel": [
+      {
+       "titel": "Vorwärts",
+       "start": 953986,
+       "end": 1136386
+      }
+     ]
     },
     {
      "teilNummer": 6,
-     "titel": "Zeit der Opfer, Zeit der Wunder"
+     "titel": "Zeit der Opfer, Zeit der Wunder",
+     "kapitel": [
+      {
+       "titel": "Objekt der Begierde",
+       "start": 1413600,
+       "end": 1684120
+      }
+     ]
     }
    ]
   }
@@ -1600,6 +1870,7 @@
    "titel": "Hotel Luxury End",
    "autor": "Ivar Leon Menger",
    "hörspielskriptautor": "Ivar Leon Menger",
+   "gesamtbeschreibung": "Eine Nacht in einem Luxushotel, direkt an der malerischen Steilküste Nordkaliforniens? Normalerweise ein Grund zur Freud",
    "beschreibung": "Eine Nacht in einem Luxushotel, direkt an der malerischen Steilküste Nordkaliforniens? Normalerweise ein Grund zur Freud",
    "veröffentlichungsdatum": "2006-11-24",
    "gesamtdauer": 9130400,
@@ -1698,11 +1969,25 @@
    "teile": [
     {
      "teilNummer": 1,
-     "titel": "Zimmer"
+     "titel": "Zimmer",
+     "kapitel": [
+      {
+       "titel": "Fragen stellen",
+       "start": 4062120,
+       "end": 4302080
+      }
+     ]
     },
     {
      "teilNummer": 2,
-     "titel": "Restaurant"
+     "titel": "Restaurant",
+     "kapitel": [
+      {
+       "titel": "KO schlagen",
+       "start": 4638867,
+       "end": 4828320
+      }
+     ]
     }
    ]
   },
@@ -1711,9 +1996,17 @@
    "titel": "Tödliche Regie",
    "autor": "André Minninger",
    "hörspielskriptautor": "André Minninger",
+   "gesamtbeschreibung": "Terror im Studio! Feige Anschläge machen der Synchronsprecherin Ellen Maxell das Leben zur Hölle. Wer steckt hinter der ",
    "beschreibung": "Terror im Studio! Feige Anschläge machen der Synchronsprecherin Ellen Maxell das Leben zur Hölle. Wer steckt hinter der ",
    "veröffentlichungsdatum": "2007-03-23",
    "gesamtdauer": 3924760,
+   "kapitel": [
+    {
+     "titel": "Endspiel",
+     "start": 2941027,
+     "end": 3924760
+    }
+   ],
    "sprechrollen": [
     {
      "rolle": "Erzähler",
@@ -1785,9 +2078,17 @@
    "titel": "Gefahr im Gruselgarten",
    "autor": "Ulf Blanck",
    "hörspielskriptautor": "Ulf Blanck",
+   "gesamtbeschreibung": "Es ist Jahrmarkt in Rocky Beach! Die drei Fragezeichen haben Freikarten bekommen, unter anderem auch für den Gruselgarte",
    "beschreibung": "Es ist Jahrmarkt in Rocky Beach! Die drei Fragezeichen haben Freikarten bekommen, unter anderem auch für den Gruselgarte",
    "veröffentlichungsdatum": "2009-08-13",
    "gesamtdauer": 4437347,
+   "kapitel": [
+    {
+     "titel": "Zündende Idee",
+     "start": 3816027,
+     "end": 4437347
+    }
+   ],
    "sprechrollen": [
     {
      "rolle": "Erzähler",
@@ -1870,9 +2171,17 @@
    "titel": "Im Bann des Zauberers",
    "autor": "Ulf Blanck",
    "hörspielskriptautor": "Ulf Blanck",
+   "gesamtbeschreibung": "Mitten auf dem Marktplatz von Rocky Beach findet eine Zaubershow statt. Einem mysteriösen Magier gelingt es dabei, das P",
    "beschreibung": "Mitten auf dem Marktplatz von Rocky Beach findet eine Zaubershow statt. Einem mysteriösen Magier gelingt es dabei, das P",
    "veröffentlichungsdatum": "2011-11-11",
    "gesamtdauer": 3847360,
+   "kapitel": [
+    {
+     "titel": "Ausgezaubert",
+     "start": 3329880,
+     "end": 3847360
+    }
+   ],
    "sprechrollen": [
     {
      "rolle": "Erzähler",
@@ -1962,6 +2271,7 @@
    "titel": "Adventskalender: 24 Tage im Weihnachtsland",
    "autor": "Ulf Blanck",
    "hörspielskriptautor": "Ulf Blanck",
+   "gesamtbeschreibung": "Nur noch 24 Tage! Dann ist es endlich soweit und Weihnachten steht vor der Tür. Auch Justus, Peter und Bob können es kau",
    "beschreibung": "Nur noch 24 Tage! Dann ist es endlich soweit und Weihnachten steht vor der Tür. Auch Justus, Peter und Bob können es kau",
    "veröffentlichungsdatum": "2016-11-04",
    "links": {
@@ -1987,9 +2297,17 @@
    "titel": "Gefahr im Dschungel",
    "autor": "Ulf Blanck",
    "hörspielskriptautor": "Ulf Blanck",
+   "gesamtbeschreibung": "Hilfe! Justus, Peter und Bob sind in einem gigantischen Dschungel-Haus gefangen! Und das nur, weil sie einem entführten ",
    "beschreibung": "Hilfe! Justus, Peter und Bob sind in einem gigantischen Dschungel-Haus gefangen! Und das nur, weil sie einem entführten ",
    "veröffentlichungsdatum": "2018-01-19",
    "gesamtdauer": 4277133,
+   "kapitel": [
+    {
+     "titel": "Matschkopf",
+     "start": 3730040,
+     "end": 4277133
+    }
+   ],
    "sprechrollen": [
     {
      "rolle": "Erzähler",
@@ -2064,7 +2382,7 @@
    "titel": "100 Stunden",
    "autor": "Ulf Blanck",
    "hörspielskriptautor": "Ulf Blanck",
-   "kurzbeschreibung": "Justus, Peter und Bob haben genau 100 Stunden Zeit, um die Forderungen eines Erpressers zu erfüllen.",
+   "gesamtbeschreibung": "Justus, Peter und Bob haben genau 100 Stunden Zeit, um die Forderungen eines Erpressers zu erfüllen.\nEin aufregender Fal",
    "beschreibung": "Ein aufregender Fall, der die drei Freunde schließlich sogar ins Gefängnis führt. Der Countdown läuft!",
    "veröffentlichungsdatum": "2025-08-01",
    "sprechrollen": [
@@ -2171,6 +2489,7 @@
  "sonstige": [
   {
    "titel": "Rocky Beach Radio Show",
+   "gesamtbeschreibung": "Was hat es mit der alten Holzkiste auf sich, die Justus auf dem Schrottplatz findet? Welche Rolle spielt das alte Rundfu",
    "beschreibung": "Was hat es mit der alten Holzkiste auf sich, die Justus auf dem Schrottplatz findet? Welche Rolle spielt das alte Rundfu",
    "veröffentlichungsdatum": "1999-08-23",
    "links": {
@@ -2189,6 +2508,7 @@
   },
   {
    "titel": "Die Welt der drei ???",
+   "gesamtbeschreibung": "Wusstet ihr, dass Skinny Norris und Morton etwas gemeinsam haben? Dass Bobs Vater ganze vier und seine Mutter gar keinen",
    "beschreibung": "Wusstet ihr, dass Skinny Norris und Morton etwas gemeinsam haben? Dass Bobs Vater ganze vier und seine Mutter gar keinen",
    "veröffentlichungsdatum": "2019-08-23",
    "links": {

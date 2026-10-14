@@ -129,13 +129,44 @@ def test_duration_counts_all_media(client):
     assert abs_entry(client, "Toteninsel")["duration"] == 167
 
 
-def test_duration_fallback_sums_all_media():
-    episode = {"medien": [{"tracks": [{"end": 1_800_000}]}, {"tracks": [{"start": 0, "end": 1_200_000}]}]}
+def test_duration_ignores_bonus_tracks(client):
+    # Super-Papagei 2004: 90 Minuten Hörspiel, die CDs enthalten zusätzlich ~26 Minuten Bonus-Tracks
+    assert abs_entry(client, "und der Super-Papagei 2004")["duration"] == 90
+
+
+def test_duration_fallback_from_kapitel():
+    episode = {"kapitel": [{"start": 0, "end": 1_200_000}, {"start": 1_200_000, "end": 3_000_000}],
+               "medien": [{"tracks": [{"end": 3_600_000}]}]}
     assert provider.duration_minutes(episode) == 50
+
+
+def test_duration_fallback_sums_teile():
+    episode = {"teile": [{"kapitel": [{"end": 1_800_000}]}, {"kapitel": [{"end": 1_200_000}]}]}
+    assert provider.duration_minutes(episode) == 50
+
+
+def test_duration_fallback_incomplete_teile():
+    episode = {"teile": [{"kapitel": [{"end": 1_800_000}]}, {"titel": "Teil ohne Kapitel"}]}
+    assert provider.duration_minutes(episode) is None
 
 
 def test_duration_missing():
     assert provider.duration_minutes({}) is None
+
+
+def test_description_uses_gesamtbeschreibung():
+    entry = {"category": "serie", "sequence": "1", "episode": {
+        "titel": "x", "kurzbeschreibung": "Kurz.", "beschreibung": "Lang.", "gesamtbeschreibung": "Kurz.\nLang."}}
+    assert provider.transform_to_abs_format(entry)["description"] == "Kurz.\nLang."
+
+
+def test_description_falls_back_to_beschreibung():
+    entry = {"category": "serie", "sequence": "1", "episode": {"titel": "x", "beschreibung": "Lang."}}
+    assert provider.transform_to_abs_format(entry)["description"] == "Lang."
+
+
+def test_default_metadata_url():
+    assert provider.METADATA_URL == "https://dreimetadaten.de/data/Alle.json"
 
 
 def test_spezial_sequence_follows_position(client):

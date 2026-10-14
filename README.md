@@ -185,8 +185,8 @@ python -m pytest
 ## Technische Details
 
 - **Framework**: Flask
-- **Datenquelle**: [dreimetadaten.de GitHub API](https://github.com/YourMJK/dreimetadaten)
-- **Caching**: Daten werden im Speicher gehalten und stündlich per ETag auf Änderungen geprüft; ist GitHub nicht erreichbar, werden die zuletzt geladenen Daten weiter genutzt
+- **Datenquelle**: statische Web-API von [dreimetadaten.de](https://dreimetadaten.de) (`https://dreimetadaten.de/data/Alle.json`, [Projekt auf GitHub](https://github.com/YourMJK/dreimetadaten))
+- **Caching**: Daten werden im Speicher gehalten und stündlich per ETag auf Änderungen geprüft; ist dreimetadaten.de nicht erreichbar, werden die zuletzt geladenen Daten weiter genutzt
 - **Fuzzy Search**: Toleriert Tippfehler und Teilangaben
 - **Score-basiertes Ranking**: Beste Treffer zuerst
 - **Metadaten**: Cover, Laufzeit (in Minuten), Sprecher (Hauptsprecher zuerst), Beschreibungen, Serie mit Folgennummer
